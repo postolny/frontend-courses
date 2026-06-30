@@ -8,6 +8,7 @@ document.getElementById("code").addEventListener("input", () => {
   window._t = setTimeout(updatePreview, 200);
 });
 window.addEventListener("DOMContentLoaded", updatePreview);
+document.getElementById("reloadBtn").addEventListener("click", updatePreview);
 const btn = document.getElementById("copyBtn");
 const iconCopy = document.getElementById("iconCopy");
 const iconCheck = document.getElementById("iconCheck");
