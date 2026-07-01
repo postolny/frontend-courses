@@ -22,3 +22,7 @@ btn.addEventListener("click", () => {
     iconCheck.style.display = "none";
   }, 1500);
 });
+document.querySelector(".exit").addEventListener("click", (e) => {
+  e.preventDefault();
+  history.back();
+});
