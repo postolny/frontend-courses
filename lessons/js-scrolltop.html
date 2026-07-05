@@ -32,82 +32,77 @@ body {
   background: yellow;
 }
 
-button {
+/* кнопка плавно появляется */
+#scrollTopBtn {
   position: fixed;
-  top: 50%;
   right: 20px;
-  transform: translateY(-50%);
+  bottom: 20px;
+  padding: 6px 7px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
 }
+
+#scrollTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* кнопка выезжает справа */
+/*#scrollTopBtn {
+  position: fixed;
+  right: -30px;
+  bottom: 20px;
+  padding: 4px 8px;
+  transition: right 0.3s ease;
+}
+
+#scrollTopBtn.show {
+  right: 20px;
+}*/
 
 p {
   margin-bottom: 20px;
 }
 </style>
 
-<button id="scrollBtn">Прокрутить</button>
+<button id="scrollTopBtn">▲</button>
+<!-- можно также использовать например такие символы: ↑ ⬆ ⇧ -->
 
 <div id="content"></div>
 
 <script>
 
-document.getElementById("scrollBtn").addEventListener("click", () => {
-  // прокрутить страницу в самый низ
-  window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: "smooth" // плавно
-    // behavior: "auto" // мгновенно (по умолчанию)
-  });
-  
-  // прокрутить страницу в начало
-  /*
+const btn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  // если прокрутили больше, чем на 300px
+  if (window.scrollY > 300) {
+    // раньше использовали document.documentElement.scrollTop
+    // или document.body.scrollTop
+    console.log(window.scrollY);
+    // добавляем кнопке класс show
+    btn.classList.add("show");
+  } else {
+    // иначе удаляем класс show
+    btn.classList.remove("show");
+  }
+});
+
+btn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
     behavior: "smooth"
   });
-  */
-
-  // прокрутить на 300px вниз
-  /*
-  window.scrollBy({
-    top: 300,
-    behavior: "smooth"
-  });
-  */
-
-  // прокрутить на 300px вверх
-  /*
-  window.scrollBy({
-    top: -300,
-    behavior: "smooth"
-  });
-  */
-
-  // прокрутить страницу к заголовку
-  /*
-  document.getElementById("title").scrollIntoView({
-    behavior: "smooth",
-    block: "start" // заголовок вверху (по умолчанию)
-    // block: "end" // заголовок внизу
-    // block: "center" // заголовок по центру
-    // block: "nearest" // браузер решает сам
-  });
-  */
 });
 
-// создаём 30 абзацев и заголовок после 15-го абзаца
+// создаём 30 абзацев
 const content = document.getElementById("content");
 
 for (let i = 1; i <= 30; i++) {
   const p = document.createElement("p");
   p.textContent = "Абзац " + i +". Пусть всегда будет солнце, пусть всегда будет небо, пусть всегда будет мама, пусть всегда буду я.";
   content.appendChild(p);
-
-  if (i === 15) {
-    const h = document.createElement("h2");
-    h.id = "title";
-    h.textContent = "Заголовок";
-    content.appendChild(h);
-  }
 }
 
 </script>
