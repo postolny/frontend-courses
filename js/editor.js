@@ -1,7 +1,6 @@
 function updatePreview() {
   const code = document.getElementById("code").value;
   document.getElementById("output").srcdoc = code;
-  document.getElementById("preview").textContent = code;
 }
 document.getElementById("code").addEventListener("input", () => {
   clearTimeout(window._t);
@@ -13,7 +12,7 @@ const btn = document.getElementById("copyBtn");
 const iconCopy = document.getElementById("iconCopy");
 const iconCheck = document.getElementById("iconCheck");
 btn.addEventListener("click", () => {
-  const code = document.getElementById("preview").innerText;
+  const code = document.getElementById("output").srcdoc;
   navigator.clipboard.writeText(code);
   iconCopy.style.display = "none";
   iconCheck.style.display = "block";
