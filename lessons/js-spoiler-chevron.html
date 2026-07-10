@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Аккордеон</title>
+  <title>Добавляем в спойлер шеврон</title>
   <link rel="stylesheet" href="../assets/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/ayu-dark.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/eclipse.css">
@@ -61,11 +61,20 @@
 <html>
 <head>
 <style>
-button {
-  display: block;
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  margin-top: 5px;
-  padding: 10px 0;
+  padding: 10px 5px;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevron.active {
+  transform: rotate(180deg);
 }
 
 .content {
@@ -80,52 +89,49 @@ button {
 </head>
 <body>
 
-<div class="accordion">
+<button class="btn"><span class="btn-text">Показать</span><span class="chevron">▼</span></button>
 
-  <!-- здесь this ссылается на саму кнопку, которую нажали -->
-  <button onclick="toggle(this)">Секция 1</button>
-  <div class="content">Содержимое секции 1</div>
-
-  <button onclick="toggle(this)">Секция 2</button>
-  <div class="content">Содержимое секции 2</div>
-
-  <button onclick="toggle(this)">Секция 3</button>
-  <div class="content">Содержимое секции 3</div>
-
-</div>
+<div class="content">Содержимое спойлера</div>
 
 <script>
+const btn = document.querySelector(".btn");
+const btnText = document.querySelector(".btn-text");
+const chevron = document.querySelector(".chevron");
+const content = document.querySelector(".content");
 
-// передаём в функцию toggle() нажатую кнопку из toggle(this)
-function toggle(btn) {
-  
-  // получаем следующий сразу за кнопкой div
-  const content = btn.nextElementSibling;
-
-  // при повторном нажатии на кнопку закрываем открытый блок
-  // если выбранный блок уже открыт (имеет класс open)
-  if (content.classList.contains("open")) {
-    // закрываем его (удаляем у него класс open)
-    content.classList.remove("open");
-    return; // выходим из функции
-  }
-
-  // закрываем все открытые блоки, обходя их циклом и удаляя класс open
-  document.querySelectorAll(".content").forEach(item => {
-    item.classList.remove("open");
-  });
-
-  // открываем только нажатый, добавляя класс open
-  content.classList.add("open");
-}
-
-// если не нужно закрывать одну секцию при открытии другой, то функция toggle сильно упрощается
-/*
-function toggle(btn) {
-  const content = btn.nextElementSibling;
+btn.addEventListener("click", function() {
   content.classList.toggle("open");
-}
-*/
+  chevron.classList.toggle("active");
+  btnText.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
+});
+
+// если на странице спойлеров несколько
+
+// <div class="spoiler">
+//   <button class="btn">
+//     <span class="btn-text">Показать</span>
+//     <span class="chevron">▼</span>
+//   </button>
+
+//   <div class="content">Содержимое спойлера</div>
+// </div>
+
+// получаем все элементы с классом spoiler (в переменной spoilers содержится коллекция всех элементов с классом spoiler)
+// const spoilers = document.querySelectorAll(".spoiler");
+
+// перебираем все найденные элементы spoiler в коллекции spoilers
+// spoilers.forEach(spoiler => {
+//   const btn = spoiler.querySelector(".btn");
+//   const btnText = spoiler.querySelector(".btn-text");
+//   const chevron = spoiler.querySelector(".chevron");
+//   const content = spoiler.querySelector(".content");
+
+//   btn.addEventListener("click", () => {
+//     content.classList.toggle("open");
+//     chevron.classList.toggle("active");
+//     btnText.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
+//   });
+// });
 </script>
 
 </body>
