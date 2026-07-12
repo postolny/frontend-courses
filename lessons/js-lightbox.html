@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Добавляем в спойлер шеврон</title>
+  <title>Лайтбокс, свойствa src и alt</title>
   <link rel="stylesheet" href="../assets/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/ayu-dark.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/eclipse.css">
@@ -61,79 +61,79 @@
 <html>
 <head>
 <style>
-.btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px 5px;
+.thumbnail {
+  width: 250px;
+  cursor: pointer;
 }
 
-.chevron {
-  transition: transform 0.3s ease;
-}
-
-.chevron.active {
-  transform: rotate(180deg);
-}
-
-.content {
+.lightbox {
   display: none;
-  margin-top: 5px;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.content.open {
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+}
+
+.lightbox-content img {
   display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 6px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
 }
 </style>
 </head>
 <body>
 
-<button class="btn"><span class="btn-text">Показать</span><span class="chevron">▼</span></button>
+<img src="../img/canaletto.jpg" alt="Каналетто - Дворец Дожей и набережная Скьявоне" class="thumbnail" id="openLightbox">
 
-<div class="content">Содержимое спойлера</div>
-
-<script>
-const btn = document.querySelector(".btn");
-const btnText = document.querySelector(".btn-text");
-const chevron = document.querySelector(".chevron");
-const content = document.querySelector(".content");
-
-btn.addEventListener("click", function() {
-  content.classList.toggle("open");
-  chevron.classList.toggle("active");
-  btnText.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
-});
-
-// если на странице спойлеров несколько
-
-/*
-<div class="spoiler">
-  <button class="btn">
-    <span class="btn-text">Показать</span>
-    <span class="chevron">▼</span>
-  </button>
-
-  <div class="content">Содержимое спойлера</div>
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <span id="closeLightbox" class="close">&times;</span>
+    <img id="lightboxImage">
+  </div>
 </div>
 
-// получаем все элементы с классом spoiler (в переменной spoilers содержится коллекция всех элементов с классом spoiler)
-const spoilers = document.querySelectorAll(".spoiler");
+<script>
+const lightbox = document.getElementById("lightbox");
+const thumbnail = document.getElementById("openLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeBtn = document.getElementById("closeLightbox");
 
-// перебираем все найденные элементы spoiler в коллекции spoilers
-spoilers.forEach(spoiler => {
-  const btn = spoiler.querySelector(".btn");
-  const btnText = spoiler.querySelector(".btn-text");
-  const chevron = spoiler.querySelector(".chevron");
-  const content = spoiler.querySelector(".content");
+thumbnail.addEventListener("click", () => {
+  // получаем URL изображения через свойство img.src, которое, в отличие от img.getAttribute("src"), возвращает абсолютный URL
+  
+  // свойству src объекта lightboxImage присваиваем значение свойства src объекта thumbnail (копируем значение свойства)
+  lightboxImage.src = thumbnail.src;
+  // свойству alt объекта lightboxImage присваиваем значение свойства alt объекта thumbnail (копируем значение свойства)
+  lightboxImage.alt = thumbnail.alt;
 
-  btn.addEventListener("click", () => {
-    content.classList.toggle("open");
-    chevron.classList.toggle("active");
-    btnText.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
-  });
+  lightbox.style.display = "block";
 });
-*/
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
 </script>
 
 </body>
