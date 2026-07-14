@@ -43,6 +43,14 @@ body {
   color: #16a085;
 }
 
+.hero-subtitle {
+  margin: 12px 0 0;
+  color: #7c7c7c;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 760px;
+}
+
 .catalog {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -338,6 +346,10 @@ code {
 
   .hero {
     padding: 20px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
   }
 
   .tabs {
