@@ -101,7 +101,7 @@ search.addEventListener("input", (e) => {
     const result = allLessons.filter((item) => {
       if (item.course !== id) return false;
       return (
-        item.title.toLowerCase().includes(text) || item.description.toLowerCase().includes(text)
+        item.title.toLowerCase().includes(text) || item.description.toLowerCase().includes(text) || item.number.toString() === text
       );
     });
     grid.innerHTML = result.map(createLessonCard).join("");
