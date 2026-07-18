@@ -104,22 +104,19 @@ body {
 
 .tab:nth-child(odd) {
   transform: rotate(-2deg);
-  box-shadow:
-    -5px 5px 0 0 #16a085;
+  box-shadow: -5px 5px 0 0 #16a085;
 }
 
 .tab:nth-child(even) {
   transform: rotate(2deg);
-  box-shadow:
-    5px 5px 0 0 #16a085;
+  box-shadow: 5px 5px 0 0 #16a085;
 }
 
 .tab.active {
   transform: rotate(0);
   background: #16a085;
   color: #fff;
-  box-shadow:
-    5px 5px 0 0 #0e6f5f;
+  box-shadow: 5px 5px 0 0 #0e6f5f;
 }
 
 .tab:active {
@@ -128,15 +125,73 @@ body {
 }
 
 .content {
+  background: #fff;
   min-width: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 38px 10px 14px;
+  border: 1px solid #16a085;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #7c7c7c;
+  outline: none;
+  box-shadow: rgb(22, 160, 133) 5px 5px 0px 0px;
+  transition: all 0.2s ease;
+}
+
+.search-box input::placeholder {
+  color: #7c7c7c;
+  opacity: 0.7;
+}
+
+.search-box input:focus {
+  border-color: #16a085;
+  box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.2);
+}
+
+#clearSearch {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #7c7c7c;
+  cursor: pointer;
+  display: none;
+}
+
+#clearSearch:hover {
+  color: #000;
 }
 
 .course {
-  display: block;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 18px;
-  padding: 24px;
   animation: fadeIn .25s ease both;
 }
 
@@ -202,6 +257,10 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+.load-more[hidden] {
+  display: none;
+}
+
 .load-more:hover {
   color: white;
   filter: brightness(1.05);
@@ -240,10 +299,29 @@ body {
   box-shadow: 14px 14px 0 0 #16a085;
 }
 
+.lesson-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .lesson-title {
   margin: 0;
   font-size: 20px;
   line-height: 1.25;
+}
+
+.lesson-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #16a085;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
 }
 
 .lesson-desc {
@@ -339,7 +417,7 @@ code {
   }
 
   .hero,
-  .course,
+  .content,
   .sidebar {
     border-radius: 18px;
   }
@@ -356,8 +434,8 @@ code {
     grid-template-columns: 1fr;
   }
 
-  .course {
-    padding: 18px;
+  .search-box {
+    max-width: none;
   }
 
   .course-title {
