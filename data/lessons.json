@@ -239,10 +239,17 @@
   },
   {
     "course": "js",
-    "title": "Метод .filter()",
-    "description": "Метод <code>forEach()</code>. Метод массива <code>.filter()</code>, позволяющий получить новый массив, фильтруя элементы с помощью переданной колбэк-функции. Составной оператор присваивания <code>+=</code>. Оператор <code>return</code>.",
+    "title": "Метод filter()",
+    "description": "Метод <code>forEach()</code>. Метод массива <code>filter()</code>, позволяющий получить новый массив, фильтруя элементы с помощью переданной колбэк-функции. Составной оператор присваивания <code>+=</code>. Оператор <code>return</code>.",
     "level": "Начальный",
     "url": "lessons/js-filter.html"
+  },
+  {
+    "course": "js",
+    "title": "Метод sort()",
+    "description": "Темы предыдущего урока. Метод <code>sort()</code>, сортирующий элементы массива и возвращающий изменённый массив (мутирующий метод). Копирование массива <code>[...products]</code>, спред-оператор (spread operator) <code>...</code>.",
+    "level": "Начальный",
+    "url": "lessons/js-sort.html"
   },
   {
     "course": "css",

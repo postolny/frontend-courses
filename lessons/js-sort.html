@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Обход элементов коллекции с помощью цикла for...of</title>
+  <title>Показать значение переменной</title>
   <link rel="stylesheet" href="../assets/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/ayu-dark.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/eclipse.css">
@@ -58,45 +58,95 @@
       <div class="panel left">
         <textarea id="code">
 <!doctype html>
-<html>
 <head>
 <style>
-  .colored-box:not(:last-of-type) {
-    margin-bottom: 3px;
-  }
-</style>
-</head>
-<body>
-
-<div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
-
-<br>
-
-<div class="colored-box">1</div>
-<div class="colored-box">2</div>
-<div class="colored-box">3</div>
-
-<br>
-
-<button id="btn">Изменить цвет</button>
-
-<script>
-const boxes = document.querySelectorAll(".box");
-
-for (const el of boxes) {
-  el.textContent = "Привет!";
+button {
+  display: block;
 }
 
-// По нажатию кнопки обходим каждый блок .colored-box и меняем цвет фона на золотой
-const btn = document.querySelector("#btn");
-const coloredBoxes = document.querySelectorAll(".colored-box");
+button:not(:last-of-type) {
+  margin-bottom: 5px;
+}
+</style>
+</head>
+<html>
+<body>
 
-btn.addEventListener("click", () => {
-  for (const coloredBox of coloredBoxes) {
-    coloredBox.style.backgroundColor = "gold";
-  }
+<ul id="list"></ul>
+
+<button id="btn">По возрастанию цены</button>
+<button id="btn1">По убыванию цены</button>
+<button id="btn2">Что стало с исходным массивом?</button>
+
+<ul id="result"></ul>
+
+<script>
+const products = [
+  { name: "Молоко", price: 39.99 },
+  { name: "Лук-репка в сетке", price: 46.99 },
+  { name: "Морковь весовая", price: 38.99 },
+  { name: "Крупа горох", price: 33.99 },
+  { name: "Яблоко Сезонное фасованное", price: 99.99 },
+];
+
+const btn = document.getElementById("btn");
+const btn1 = document.getElementById("btn1");
+const result = document.getElementById("result");
+const list = document.getElementById("list");
+const btn2 = document.getElementById("btn2");
+
+// оборачиваем в функцию
+function render() {
+  list.innerHTML = ""; // очищаем
+  // метод forEach() перебирает каждый товар массива products
+  // каждый товар по очереди попадает во временную переменную product
+  products.forEach(function (product) {
+    // добавляем каждый товар отдельным элементом списка <li> (раз мы выводим HTML, то используем свойство innerHTML)
+    // += (оператор присваивания с добавлением) добавляет новый HTML к уже существующему содержимому, поэтому все товары будут выведены один за другим
+    list.innerHTML += `<li>${product.name} - ${product.price} ₽</li>`;
+  });
+}
+
+render(); // и запускаем её
+
+/*
+sort() изменяет исходный массив products
+products.sort((a, b) => a.price - b.price);
+
+чтобы не менять исходный массив, сначала нужно создать копию и сортировать уже её
+const cheapToExpensive = [...products].sort(function (a, b) {
+  return a.price - b.price;
+});
+или со стрелочной функцией
+const cheapToExpensive = [...products].sort((a, b) => a.price - b.price);
+*/
+
+btn.addEventListener("click", function () {
+  const cheapToExpensive = products.sort(function (a, b) {
+    return a.price - b.price;
+  });
+
+  result.innerHTML = ""; // очищаем
+
+  cheapToExpensive.forEach(function (product) {
+    result.innerHTML += `<li>${product.name} - ${product.price} ₽</li>`;
+  });
+});
+
+btn1.addEventListener("click", function () {
+  const expensiveToCheap = products.sort(function (a, b) {
+    return b.price - a.price;
+  });
+
+  result.innerHTML = "";
+
+  expensiveToCheap.forEach(function (product) {
+    result.innerHTML += `<li>${product.name} - ${product.price} ₽</li>`;
+  });
+});
+
+btn2.addEventListener("click", function () {
+  render(); // обновляем
 });
 </script>
 
