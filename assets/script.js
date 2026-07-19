@@ -145,17 +145,23 @@ clearSearch.addEventListener("click", () => {
   search.dispatchEvent(new Event("input"));
   search.focus();
 });
+const tocWindow = document.getElementById("tocWindow");
 function openToc() {
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-  document.getElementById("tocWindow").classList.add("active");
+  tocWindow.classList.add("active");
   document.body.style.overflow = "hidden";
   document.body.style.paddingRight = `${scrollbarWidth}px`;
 }
 function closeToc() {
-  document.getElementById("tocWindow").classList.remove("active");
+  tocWindow.classList.remove("active");
   document.body.style.overflow = "";
   document.body.style.paddingRight = "";
 }
+window.addEventListener("click", (event) => {
+  if (event.target === tocWindow) {
+    closeToc();
+  }
+});
 document.getElementById("openTocButton").addEventListener("click", openToc);
 document.getElementById("closeTocButton").addEventListener("click", closeToc);
 document.getElementById("year").textContent = new Date().getFullYear();
