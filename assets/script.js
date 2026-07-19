@@ -15,6 +15,37 @@ document.querySelectorAll(".tab").forEach((tab) => {
   const id = tab.dataset.course;
   tab.querySelector(".count").textContent = `(${lessonCounts[id] || 0})`;
 });
+const contentToc = document.getElementById("content-toc");
+const groups = allLessons.reduce((acc, lesson) => {
+  (acc[lesson.course] ??= []).push(lesson);
+  return acc;
+}, {});
+const courseNames = {
+  js: "JavaScript",
+  jquery: "jQuery",
+  css: "CSS",
+  html: "HTML"
+}
+contentToc.innerHTML = Object.entries(groups)
+  .map(([course, lessons]) => `
+    <details name="accordion" class="toc-course">
+      <summary>
+        ${courseNames[course] || course} (${lessons.length})
+      </summary>
+      <div>
+        <ol>
+          ${lessons.map(lesson => `
+            <li>
+              <a href="${lesson.url}">
+                ${lesson.title}
+              </a>
+            </li>
+          `).join("")}
+        </ol>
+     </div>
+    </details>
+  `)
+  .join("");
 const pageSize = 8;
 const shown = {};
 // создание карточки
@@ -114,4 +145,14 @@ clearSearch.addEventListener("click", () => {
   search.dispatchEvent(new Event("input"));
   search.focus();
 });
+function openToc() {
+  document.getElementById("tocWindow").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+function closeToc() {
+  document.getElementById("tocWindow").classList.remove("active");
+  document.body.style.overflow = "auto";
+}
+document.getElementById("openTocButton").addEventListener("click", openToc);
+document.getElementById("closeTocButton").addEventListener("click", closeToc);
 document.getElementById("year").textContent = new Date().getFullYear();
