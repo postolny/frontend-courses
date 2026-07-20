@@ -252,6 +252,13 @@
     "url": "lessons/js-sort.html"
   },
   {
+    "course": "js",
+    "title": "Цикл for...in, простой словарь",
+    "description": "Метод <code>toLowerCase()</code>, переводящий строку в нижний регистр. Метод <code>trim()</code>, удаляющий пробелы в начале и конце строки. Цикл <code>for...in</code>, позволяющий перебирать свойства (ключи) объекта. Метод <code>includes()</code>, проверяющий содержит ли одна строка другую строку. Логический оператор <code>!</code> (оператор \"не\") и проверка с его помощью поля на пустоту. Оператор <code>return</code>.",
+    "level": "Начальный",
+    "url": "lessons/js-for...in.html"
+  },
+  {
     "course": "css",
     "title": "Базовые селекторы CSS",
     "description": "Подключение CSS. Селектор по тегу. Свойство и его значение. Свойства: <code>background-color</code>, <code>font-family</code>, <code>color</code>, <code>font-size</code>, <code>text-align</code>, <code>text-transform</code>, <code>letter-spacing</code>, <code>line-height</code>. Шестнадцатеричный код цвета (hex-код — RGB в шестнадцатеричной системе: red, green, blue).",
