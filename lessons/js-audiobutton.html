@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Методы play() и pause()</title>
+  <title>Аудиокнопка</title>
   <link rel="stylesheet" href="../assets/codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/ayu-dark.css">
   <link rel="stylesheet" href="../assets/codemirror/theme/eclipse.css">
@@ -59,43 +59,95 @@
         <textarea id="code">
 <!doctype html>
 <html>
+<head>
+<style>
+.icon-pause {
+  display: none;
+}
+
+.playing .icon-play {
+  display: none;
+}
+
+.playing .icon-pause {
+  display: block;
+}
+
+button {
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+</style>
+</head>
 <body>
 
 <audio id="player" src="../audio/bach-carl-philipp-emanuel-march.mp3" preload="auto"></audio>
 
-<button onclick="playAudio()">Запустить audio</button>
-<button onclick="pauseAudio()">Остановить audio</button>
+<button id="play-pause">
+  <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path fill="currentColor" d="M6 4v16a1 1 0 0 0 1.524.852l13-8a1 1 0 0 0 0-1.704l-13-8A1 1 0 0 0 6 4" />
+  </svg>
+  <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path fill="currentColor" d="M9 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m8 0h-2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2" />
+  </svg>
+</button>
 
 <p>Карл Филипп Эмануэль Бах — Марш ре мажор (BWV Anh. 122).</p>
 
 <script>
-  const player = document.getElementById("player");
+const player = document.getElementById("player");
+const playPause = document.getElementById("play-pause");
+// или
+/*
+const player = document.querySelector("#player");
+const playPause = document.querySelector("#play-pause");
+*/
 
-  // стрелочные функции
-  const playAudio = () => player.play();
-  const pauseAudio = () => player.pause();
-
-  // обычные функции
-  /*
-  const playAudio = function () {
+playPause.addEventListener("click", () => {
+  if (player.paused) {
     player.play();
-  };
-
-  const pauseAudio = function () {
-    player.pause();
-  };
-  */
-
-  // или
-  /*
-  function playAudio() {
-    player.play();
-  }
-
-  function pauseAudio() {
+  } else {
     player.pause();
   }
-  */
+});
+
+player.addEventListener("play", () => {
+  playPause.classList.add("playing");
+});
+
+player.addEventListener("pause", () => {
+  console.log(player.currentTime);
+  playPause.classList.remove("playing");
+});
+
+player.addEventListener("ended", () => {
+  player.currentTime = 0;
+  playPause.classList.remove("playing");
+});
+
+// варианты
+/*
+player.addEventListener("play", () => {
+  playPause.querySelector(".icon-play").style.display = "none";
+  playPause.querySelector(".icon-pause").style.display = "";
+});
+
+// или
+.hidden {
+  display: none;
+}
+player.addEventListener("play", () => {
+  playPause.querySelector(".icon-play").classList.add("hidden");
+  playPause.querySelector(".icon-pause").classList.remove("hidden");
+});
+
+// в pause и ended делаем наоборот
+*/
 </script>
 
 </body>

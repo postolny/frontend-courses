@@ -78,10 +78,17 @@
   },
   {
     "course": "js",
-    "title": "Методы .play() и .pause()",
-    "description": "Получение элемента с <code>id=\"player\"</code> с помощью метода <code>getElementById()</code>. Присвоение переменным <code>playAudio</code> и <code>pauseAudio</code> стрелочных функций. Вызов методов <code>play()</code> и <code>.pause()</code> объекта <code>player</code>, которые соответственно запускают и останавливают воспроизведение аудио.",
+    "title": "Методы play() и pause()",
+    "description": "Получение элемента с <code>id=\"player\"</code> с помощью метода <code>getElementById()</code>. Присвоение переменным <code>playAudio</code> и <code>pauseAudio</code> стрелочных функций. Вызов методов <code>play()</code> и <code>pause()</code> объекта <code>player</code>, которые соответственно запускают и останавливают воспроизведение аудио.",
     "level": "Начальный",
     "url": "lessons/js-play-pause.html"
+  },
+  {
+    "course": "js",
+    "title": "Аудиокнопка",
+    "description": "Методы <code>play()</code>, <code>pause()</code>, <code>add()</code>, <code>remove()</code>. События <code>play</code>, <code>pause</code>, <code>ended</code>. Свойство объекта <code>audio</code> (<code>video</code>) <code>currentTime</code>.",
+    "level": "Начальный",
+    "url": "lessons/js-audiobutton.html"
   },
   {
     "course": "js",
@@ -165,7 +172,7 @@
     "title": "Кнопка \"Наверх\"",
     "description": "Темы предыдущего урока. Свойство <code>window.scrollY</code>, показывающее на сколько пикселей страница прокручена по вертикали от самого верха. Свойство <code>classList</code>, позволяющее управлять CSS-классами с помощью различных методов. Метод <code>add()</code>, позволяющий добавлять CSS-класс.",
     "level": "Начальный",
-    "url": "lessons/js-scrolltop.html"
+    "url": "lessons/js-scroll-up.html"
   },
   {
     "course": "js",

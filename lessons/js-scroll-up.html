@@ -66,23 +66,26 @@ body {
 }
 
 /* кнопка плавно появляется */
-#scrollTopBtn {
+#scrollUpBtn {
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  border: 2px solid black;
   position: fixed;
   right: 20px;
   bottom: 20px;
-  padding: 6px 7px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
 }
 
-#scrollTopBtn.show {
+#scrollUpBtn.show {
   opacity: 1;
   visibility: visible;
 }
 
 /* кнопка выезжает справа */
-/*#scrollTopBtn {
+/*#scrollUpBtn {
   position: fixed;
   right: -30px;
   bottom: 20px;
@@ -90,7 +93,7 @@ body {
   transition: right 0.3s ease;
 }
 
-#scrollTopBtn.show {
+#scrollUpBtn.show {
   right: 20px;
 }*/
 
@@ -101,14 +104,18 @@ p {
 </head>
 <body>
 
-<button id="scrollTopBtn">▲</button>
-<!-- можно также использовать например такие символы: ↑ ⬆ ⇧ -->
+<button id="scrollUpBtn">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m6-8l-6-6m-6 6l6-6" />
+  </svg>
+</button>
 
 <div id="content"></div>
 
 <script>
 
-const btn = document.getElementById("scrollTopBtn");
+const btn = document.getElementById("scrollUpBtn");
 
 window.addEventListener("scroll", () => {
   // если прокрутили больше, чем на 300px
