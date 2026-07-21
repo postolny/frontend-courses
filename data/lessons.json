@@ -86,9 +86,16 @@
   {
     "course": "js",
     "title": "Аудиокнопка",
-    "description": "Методы <code>play()</code>, <code>pause()</code>, <code>add()</code>, <code>remove()</code>. События <code>play</code>, <code>pause</code>, <code>ended</code>. Свойство объекта <code>audio</code> (<code>video</code>) <code>currentTime</code>.",
+    "description": "Методы <code>play()</code>, <code>pause()</code>, <code>add()</code>, <code>remove()</code>. События <code>play</code>, <code>pause</code>, <code>ended</code>. Свойство <code>currentTime</code> объекта <code>audio</code> (<code>video</code>).",
     "level": "Начальный",
     "url": "lessons/js-audiobutton.html"
+  },
+  {
+    "course": "js",
+    "title": "Добавляем прогресс-бар для аудиокнопки",
+    "description": "Темы предыдущего урока. Событие <code>timeupdate</code>. Свойство <code>duration</code> объекта <code>audio</code> (<code>video</code>). Свойство <code>width</code>.",
+    "level": "Начальный",
+    "url": "lessons/js-audiobutton-progress-bar.html"
   },
   {
     "course": "js",
