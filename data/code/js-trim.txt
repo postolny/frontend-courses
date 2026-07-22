@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<body>
+
+<input id="name" type="text" size="14" placeholder="Введи своё имя">
+
+<button onclick="view()">Нажми меня</button>
+<p id="result"></p>
+
+<script>
+function view() {
+  let inputValue = document.getElementById("name").value;
+
+  if (inputValue.trim() === "") {
+    document.getElementById("result").textContent = "Введи своё имя!";
+    return; // выходим из функции
+  }
+
+  document.getElementById("result").textContent = "Привет, " + inputValue + "!";
+  // или в обратных кавычках (шаблонная строка)
+  // document.getElementById("result").textContent = `Привет, ${inputValue}!`;
+}
+</script>
+
+</body>
+</html>

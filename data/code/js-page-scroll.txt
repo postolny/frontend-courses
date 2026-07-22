@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body {
+  background: yellow;
+}
+
+button {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+p {
+  margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<button id="scrollBtn">Прокрутить</button>
+
+<div id="content"></div>
+
+<script>
+
+document.getElementById("scrollBtn").addEventListener("click", () => {
+  // прокрутить страницу в самый низ
+  window.scrollTo({
+    top: document.body.scrollHeight,
+    behavior: "smooth" // плавно
+    // behavior: "auto" // мгновенно (по умолчанию)
+  });
+  
+  // прокрутить страницу в начало
+  /*
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+  */
+
+  // прокрутить на 300px вниз
+  /*
+  window.scrollBy({
+    top: 300,
+    behavior: "smooth"
+  });
+  */
+
+  // прокрутить на 300px вверх
+  /*
+  window.scrollBy({
+    top: -300,
+    behavior: "smooth"
+  });
+  */
+
+  // прокрутить страницу к заголовку
+  /*
+  document.getElementById("title").scrollIntoView({
+    behavior: "smooth",
+    block: "start" // заголовок вверху (по умолчанию)
+    // block: "end" // заголовок внизу
+    // block: "center" // заголовок по центру
+    // block: "nearest" // браузер решает сам
+  });
+  */
+});
+
+// создаём 30 абзацев и заголовок после 15-го абзаца
+const content = document.getElementById("content");
+
+for (let i = 1; i <= 30; i++) {
+  const p = document.createElement("p");
+  p.textContent = "Абзац " + i +". Пусть всегда будет солнце, пусть всегда будет небо, пусть всегда будет мама, пусть всегда буду я.";
+  content.appendChild(p);
+
+  if (i === 15) {
+    const h = document.createElement("h2");
+    h.id = "title";
+    h.textContent = "Заголовок";
+    content.appendChild(h);
+  }
+}
+
+</script>
+
+</body>
+</html>

@@ -36,7 +36,7 @@ contentToc.innerHTML = Object.entries(groups)
         <ol>
           ${lessons.map(lesson => `
             <li>
-              <a href="${lesson.url}">
+              <a href="lesson.html#${lesson.file}">
                 ${lesson.title}
               </a>
             </li>
@@ -51,7 +51,7 @@ const shown = {};
 // создание карточки
 function createLessonCard(item) {
   return `
-  <a class="lesson" href="${item.url}">
+  <a class="lesson" href="lesson.html#${item.file}">
     <div class="lesson-top">
       <h3 class="lesson-title">
         ${item.title}
@@ -69,7 +69,7 @@ function createLessonCard(item) {
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
           <path d="M0 0h24v24H0z" fill="none" />
           <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 12l-6-6m6 6l-6 6m6-6H5" />
-        < /svg>
+        </svg>
       </span>
     </div>
   </a>

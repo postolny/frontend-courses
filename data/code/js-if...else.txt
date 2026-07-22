@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<body>
+
+<input id="age" type="text" size="14" placeholder="Сколько тебе лет">
+
+<button onclick="view()">Нажми меня</button>
+<p id="result"></p>
+
+<script>
+function view() {
+  let age = Number(document.getElementById("age").value);
+  let result = document.getElementById("result");
+  if (age >= 18) {
+    result.textContent = "Доступ разрешён";
+  } else {
+    result.textContent = "Доступ запрещён";
+  }
+}
+
+// вариант
+/*
+const age = document.getElementById("age");
+const result = document.getElementById("result");
+
+function view() {
+  if (Number(age.value) >= 18) {
+  // или
+  // if (+age.value >= 18) {
+      result.textContent = "Доступ разрешён";
+  } else {
+      result.textContent = "Доступ запрещён";
+  }
+}
+*/
+</script>
+
+</body>
+</html>

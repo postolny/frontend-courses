@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+
+<button onclick="view()">Нажми меня</button>
+<p id="result"></p>
+
+<script>
+let yourName = "Игорь";
+
+function view() {
+  document.getElementById("result").textContent = "Привет, " + yourName + "!";
+  // или в обратных кавычках (шаблонная строка)
+  // document.getElementById("result").textContent = `Привет, ${yourName}!`;
+}
+</script>
+
+</body>
+</html>

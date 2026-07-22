@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<style>
+button {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 0;
+}
+
+.content {
+  display: none;
+  margin-top: 5px;
+}
+
+.content.open {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="accordion">
+
+  <!-- здесь this ссылается на саму кнопку, которую нажали -->
+  <button onclick="toggle(this)">Секция 1</button>
+  <div class="content">Содержимое секции 1</div>
+
+  <button onclick="toggle(this)">Секция 2</button>
+  <div class="content">Содержимое секции 2</div>
+
+  <button onclick="toggle(this)">Секция 3</button>
+  <div class="content">Содержимое секции 3</div>
+
+</div>
+
+<script>
+
+// передаём в функцию toggle() нажатую кнопку из toggle(this)
+function toggle(btn) {
+  
+  // получаем следующий сразу за кнопкой div
+  const content = btn.nextElementSibling;
+
+  // при повторном нажатии на кнопку закрываем открытый блок
+  // если выбранный блок уже открыт (имеет класс open)
+  if (content.classList.contains("open")) {
+    // закрываем его (удаляем у него класс open)
+    content.classList.remove("open");
+    return; // выходим из функции
+  }
+
+  // закрываем все открытые блоки, обходя их циклом и удаляя класс open
+  document.querySelectorAll(".content").forEach(item => {
+    item.classList.remove("open");
+  });
+
+  // открываем только нажатый, добавляя класс open
+  content.classList.add("open");
+}
+
+// если не нужно закрывать одну секцию при открытии другой, то функция toggle сильно упрощается
+/*
+function toggle(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle("open");
+}
+*/
+</script>
+
+</body>
+</html>

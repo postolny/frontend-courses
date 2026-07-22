@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<body>
+
+<h2>Случайный композитор</h2>
+
+<button id="btn">Выбрать композитора</button>
+
+<p>Сегодня мы будем слушать музыку <span id="result"></span></p>
+
+<script>
+
+const composers = [
+  "Гайдн",
+  "Моцарт",
+  "Бетховен",
+  "Шопен",
+  "Лист",
+  "Лядов",
+  "Скрябин",
+  "Балакирев",
+  "Глазунов",
+  "Бородин",
+  "Рахманинов",
+  "Прокофьев",
+  "Шостакович"
+];
+
+const button = document.getElementById("btn");
+const result = document.getElementById("result");
+
+button.addEventListener("click", () => {
+  // умножаем Math.random() на composers.length (на количество элементов в массиве)
+  // округляем полученные дробные числа с помощью Math.floor()
+  const index = Math.floor(Math.random() * composers.length);
+  result.textContent = composers[index] + "а"; // получаем случайный индекс из массива, добавляем окончание а и выводим результат
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #353535;
+  padding: 2px 4px;
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tbody id="result"></tbody>
+</table>
+
+<script>
+
+const result = document.querySelector("#result");
+
+let i = 1; // создаём счётчик (начинаем с 1)
+
+while (i <= 10) {
+  // создаём строку
+  const tr = document.createElement("tr");
+
+  // создаём ячейки
+  const td1 = document.createElement("td");
+  const td2 = document.createElement("td");
+  const td3 = document.createElement("td");
+
+  // заполняем текстом
+  td1.textContent = "5 × " + i;
+  // td1.textContent = `5 × ${i}`; // с шаблонной строкой
+  td2.textContent = "=";
+  td3.textContent = 5 * i;
+
+  // добавляем ячейки в строку
+  tr.append(td1, td2, td3);
+
+  // добавляем строку в таблицу
+  result.append(tr);
+
+  i++; // увеличиваем счётчик на единицу
+}
+
+</script>
+
+</body>
+</html>

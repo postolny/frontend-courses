@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body {
+  background: yellow;
+}
+
+/* кнопка плавно появляется */
+#scrollUpBtn {
+  width: 32px;
+  height: 32px;
+  padding: 3px;
+  border: 2px solid black;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+#scrollUpBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* кнопка выезжает справа */
+/*#scrollUpBtn {
+  position: fixed;
+  right: -30px;
+  bottom: 20px;
+  padding: 4px 8px;
+  transition: right 0.3s ease;
+}
+
+#scrollUpBtn.show {
+  right: 20px;
+}*/
+
+p {
+  margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<button id="scrollUpBtn">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M0 0h24v24H0z" fill="none" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m6-8l-6-6m-6 6l6-6" />
+  </svg>
+</button>
+
+<div id="content"></div>
+
+<script>
+
+const btn = document.getElementById("scrollUpBtn");
+
+window.addEventListener("scroll", () => {
+  // если прокрутили больше, чем на 300px
+  if (window.scrollY > 300) {
+    // раньше использовали document.documentElement.scrollTop
+    // или document.body.scrollTop
+    console.log(window.scrollY);
+    // добавляем кнопке класс show
+    btn.classList.add("show");
+  } else {
+    // иначе удаляем класс show
+    btn.classList.remove("show");
+  }
+});
+
+btn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// создаём 30 абзацев
+const content = document.getElementById("content");
+
+for (let i = 1; i <= 30; i++) {
+  const p = document.createElement("p");
+  p.textContent = "Абзац " + i +". Пусть всегда будет солнце, пусть всегда будет небо, пусть всегда будет мама, пусть всегда буду я.";
+  content.appendChild(p);
+}
+
+</script>
+
+</body>
+</html>

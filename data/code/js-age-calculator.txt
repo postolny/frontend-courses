@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<body>
+
+<h2>Калькулятор возраста</h2>
+
+<input type="date" id="birthdayInput">
+<button onclick="calculateAge()">Рассчитать</button>
+
+<p id="result"></p>
+
+<script>
+function calculateAge() {
+
+  // получаем дату рождения из поля input
+  const birthdayValue = document.getElementById("birthdayInput").value;
+
+  // проверка на пустоту (оператор ! - оператор логического отрицания)
+  if (!birthdayValue) {
+    document.getElementById("result").textContent = "Введите дату рождения";
+    return;
+  }
+
+  // создаём объект Date из введённой даты
+  const birthday = new Date(birthdayValue);
+  console.log("день рождения (birthday): " + birthday);
+  const today = new Date();
+  console.log("сегодня (today): " + today);
+
+  // примерный расчёт возраста
+  let age = today.getFullYear() - birthday.getFullYear();
+  console.log("разница между годами: " + age);
+  // если ещё не исполнилось, то в консоли будет на год больше и поэтому проверяем дальше
+
+  // был ли уже день рождения в этом году (разница между текущим месяцем и месяцем рождения)
+  const monthDiff = today.getMonth() - birthday.getMonth();
+  console.log("текущий месяц (today.getMonth()): " + today.getMonth());
+  console.log("месяц рождения (birthday.getMonth()): " + birthday.getMonth());
+  console.log("разница между текущим месяцем и месяцем рождения: " + monthDiff);
+  // если monthDiff < 0, значит месяц рождения ещё не наступил
+  // если monthDiff === 0, нужно ещё проверить число
+
+  console.log("сегодняшнее число: " + today.getDate());
+  console.log("число рождения: " + birthday.getDate());
+    
+  // теперь, если месяц рождения ещё не наступил (monthDiff < 0) или если он наступил (monthDiff === 0) и сегодняшнее число (today.getDate()) меньше числа дня рождения (birthday.getDate())
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthday.getDate())) {
+    age--; // то отнимаем 1
+  }
+
+  // выводим на страницу
+  document.getElementById("result").textContent = "Ваш возраст: " + age;
+}
+</script>
+
+</body>
+</html>

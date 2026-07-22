@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.wrong {
+  color: red;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<h2>Викторина по литературе</h2>
+
+<p>1. Автор трагедии "Фауст"</p>
+
+<label>
+  <input type="radio" name="q1" value="1">Иоганн Вольфганг Гёте
+</label>
+
+<br>
+
+<label>
+  <input type="radio" name="q1" value="0">Фридрих Шиллер
+</label>
+
+<br>
+
+<label>
+  <input type="radio" name="q1" value="0">Джордж Гордон Байрон
+</label>
+
+<br>
+
+<p>2. Автор комедии "Горе от ума"</p>
+
+<label>
+  <input type="radio" name="q2" value="1">Александр Сергеевич Грибоедов
+</label>
+
+<br>
+
+<label>
+  <input type="radio" name="q2" value="0">Николай Михайлович Карамзин
+</label>
+
+<br>
+
+<label>
+  <input type="radio" name="q2" value="0">Иван Андреевич Крылов
+</label>
+
+<br>
+
+<p>3. Автор трагедии "Гамлет"</p>
+
+<label>
+  <input type="radio" name="q3" value="0">Мигель де Сервантес
+</label>
+
+<br>
+
+<label>
+  <input type="radio" name="q3" value="1">Уильям Шекспир
+</label>
+
+<br>
+
+<label>
+  <input type="radio" name="q3" value="0">Лопе де Вега
+</label>
+
+<br><br>
+
+<button onclick="checkQuiz()">Проверить</button> <span id="result"></span>
+
+<script>
+function checkQuiz() {
+  let score = 0; // счётчик
+  const result = document.getElementById("result");
+
+  let labels = document.querySelectorAll("label");
+
+  // обходим все label и удаляем подсветку результатов (чтобы при повторном нажатии на кнопку страя подсветка не оставалась)
+  for (let i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("correct");
+    labels[i].classList.remove("wrong");
+  }
+  // или короче
+  // for (let i = 0; i < labels.length; i++) {
+  //   labels[i].classList.remove("correct", "wrong");
+  // }
+
+  // проверяем вопросы
+  // цикл перебирает значения i: 1, 2, 3
+  for (let i = 1; i <= 3; i++) {
+    // выбранный ответ
+    // [name="q" + i + "] сформирует значения атрибута name: q1, q2, q3
+    let selected = document.querySelector('input[name="q' + i + '"]:checked');
+
+    // если есть неотмеченные радиокнопки
+    if (!selected) {
+      // показываем сообщение
+      result.textContent = "Выберите ответ";
+      return; // останавливаем выполнение функции
+    }
+
+    // правильный ответ
+    // [name="q" + i + "] сформирует значения атрибута name: q1, q2, q3 и добавит value="1"
+    let correct = document.querySelector(
+      'input[name="q' + i + '"][value="1"]'
+    );
+
+    // ищем родителя с помощью свойства parentElement
+    // если бы не было защиты выше if (!selected) с выходом из функции, то для защиты проверку ниже лучше обернуть в if (selected) {}
+
+    // если выбранная радиокнопка имеет value="1"
+    if (selected.value == "1") {
+      score++; // увеличиваем счётчик
+      selected.parentElement.classList.add("correct"); // добавляем класс correct для label, который является родителем выбранной радиокнопки
+    } else {
+      // а иначе добавляем класс wrong для label
+      selected.parentElement.classList.add("wrong");
+      // а также добавляем класс correct для label для правильно выбранной радиокнопки
+      correct.parentElement.classList.add("correct");
+    }
+
+    // ищем родителя с помощью метода closest()
+    // также если нужно, делаем защиту if (selected) {}
+    // if (selected.value == "1") {
+    //   score++;
+    //   selected.closest("label").classList.add("correct");
+    // } else {
+    //   selected.closest("label").classList.add("wrong");
+    //   correct.closest("label").classList.add("correct");
+    // }
+  }
+
+  // выводим результат
+  result.textContent = "Правильных ответов: " + score + " из 3";
+}
+</script>
+
+</body>
+</html>

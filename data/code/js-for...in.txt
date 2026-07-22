@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<body>
+
+<h2>Простой англо-русский словарь</h2>
+
+<input id="search" type="text" placeholder="Введите слово">
+
+<div id="result"></div>
+
+<script>
+const dictionary = {
+  dog: "собака",
+  cat: "кошка",
+  house: "дом",
+  car: "машина",
+  family: "семья",
+  peace: "мир",
+  tree: "дерево",
+  apple: "яблоко",
+  sun: "солнце",
+  book: "книга",
+  white: "белый",
+  red: "красный",
+  green: "зелёный",
+  black: "чёрный"
+};
+
+const search = document.querySelector("#search");
+const result = document.querySelector("#result");
+
+search.addEventListener("input", () => {
+  // заносим в переменную значение поля, переводим в нижний регистр и обрезаем концы (удаляем пробелы по краям)
+  const value = search.value.toLowerCase().trim();
+  // если поле пустое, то очищаем результат и выходим из функции
+  // другие варианты: if (value === "") или if (value.trim() === "")
+  if (!value) {
+    result.innerHTML = "";
+    return;
+  }
+  // очищаем предыдущие результаты, чтобы не накапливать их при новом поиске
+  result.innerHTML = "";
+  // word - переменная цикла (временная переменная), в которой хранится текущий ключ объекта dictionary
+  for (const word in dictionary) {
+    // переводим в нижний регистр на тот случай если в объекте слова в разном регистре, если там всё в нижнем, то можно написать if (word.includes(value))
+    // метод includes() проверяет, есть ли введенный текст внутри слова из словаря
+    if (word.toLowerCase().includes(value)) {
+      // выводим результат (ключ и двоеточие после оборачивам в <strong>, чтобы сделать текст жирным)
+      // в квадратных скобках указываем ключ объекта, чтобы получить его значение
+      // используем оператор +=, чтобы добавить новый результат к уже существующему содержимому (если использовать =, предыдущее содержимое будет заменено новым)
+      result.innerHTML += `<p><strong>${word}:</strong> ${dictionary[word]}</p>`;
+    }
+  }
+});
+
+// чтобы не записывать каждое найденное слово сразу в result.innerHTML, лучше сначала собрать всю разметку в переменной html и после завершения цикла сразу вставить её в элемент result
+/*
+search.addEventListener("input", () => {
+  const value = search.value.toLowerCase().trim();
+  if (!value) {
+    result.innerHTML = "";
+    return;
+  }
+
+  let html = ""; // создаём пустую переменную, в которой будем собирать результаты поиска
+
+  for (const word in dictionary) {
+    if (word.toLowerCase().includes(value)) {
+      html += `<p><strong>${word}:</strong> ${dictionary[word]}</p>`;
+    }
+  }
+  result.innerHTML = html;
+});
+*/
+</script>
+
+</body>
+</html>

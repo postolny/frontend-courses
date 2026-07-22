@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<body>
+
+<div id="result"></div>
+
+<script>
+const today = new Date();
+
+const day = today.getDate();
+const month = today.getMonth() + 1; // прибавляем 1, потому что месяцы начинаются с 0
+const year = today.getFullYear();
+
+const hours = today.getHours();
+const minutes = today.getMinutes();
+
+const result = document.getElementById("result");
+
+result.innerHTML = "<p>Сегодня: " + day + "." + month + "." + year + "</p>" + "<p>Текущее время: " + hours + ":" + minutes + "</p>";
+
+// или с использованием шаблонной строки
+/*
+result.innerHTML = `
+  <p>Сегодня: ${day}.${month}.${year}</p>
+  <p>Текущее время: ${hours}:${minutes}</p>
+`;
+*/
+</script>
+
+</body>
+</html>

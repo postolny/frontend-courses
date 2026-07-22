@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<body>
+
+<div id="result"></div>
+
+<br>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<br>
+
+<ul>
+  <li class="item">Пункт</li>
+  <li class="item">Пункт</li>
+  <li class="item">Пункт</li>
+</ul>
+
+<button id="btn">Пронумеровать</button>
+
+<script>
+// цикл будет выполняться 10 раз, изначально значение переменной i будет 0, за каждую итерацию цикла значение будет увеличиваться на единицу и так будет происходить до тех пор, пока i будет меньше, чем число 10
+let result = document.getElementById("result");
+for(let i = 0; i < 10; i++) {
+  console.log(i);
+  result.textContent += i + " "; // с оператором присваивания +=
+  // эквивалентна
+  // result.textContent = result.textContent + i + " ";
+  // result.innerHTML += i + "<br>"; // добавляем перенос
+  // с использованием шаблонной строки
+  // result.innerHTML += `${i}<br>`;
+}
+
+const boxes = document.querySelectorAll(".box");
+
+for (let i = 0; i < boxes.length; i++) {
+  boxes[i].textContent = "Привет!";
+}
+
+const btn = document.querySelector("#btn");
+const items = document.querySelectorAll(".item");
+
+btn.addEventListener("click", () => {
+  for (let i = 0; i < items.length; i++) {
+    /* к индексу прибавляем 1, чтобы получилось Пункт 1 Пункт 2 Пункт 3,
+    а не Пункт 0 Пункт 1 Пункт 2, поскольку индекс начинается с 0 */
+    items[i].textContent = "Пункт " + (i + 1);
+    // или в обратных кавычках (шаблонная строка)
+    // items[i].textContent = `Пункт ${i + 1}`;
+  }
+});
+</script>
+
+</body>
+</html>

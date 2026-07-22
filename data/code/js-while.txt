@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<body>
+
+<button id="btn">Показать таблицу</button>
+
+<p id="result" style="display:none; border: 1px solid #353535; padding: 5px; width: fit-content;"></p>
+
+<script>
+const btn = document.querySelector("#btn");
+const result = document.querySelector("#result");
+
+let isVisible = false; // флаг (изначально блок скрыт, поэтому значение false)
+
+let i = 1; // создаём счётчик (начинаем с 1)
+result.innerHTML = ""; // чтобы старый результат не оставался, очищаем его при клике
+  
+// цикл будет повторяться, пока i меньше или равно 10
+while (i <= 10) {
+  result.innerHTML += "5 × " + i + " = " + (5 * i) + "<br>"; // добавляем перенос, чтобы было в столбик
+  // с шаблонной строкой
+  // result.innerHTML += `5 × ${i} = ${5 * i}<br>`;
+  i++; // увеличиваем счётчик на единицу
+}
+
+btn.addEventListener("click", () => {
+  isVisible = !isVisible; // переключатель (true - false)
+  
+  // если isVisible равно true, выбираем block, иначе none
+  result.style.display = isVisible ? "block" : "none";
+  // если isVisible равно true, выбираем Скрыть таблицу, иначе Показать таблицу
+  btn.textContent = isVisible ? "Скрыть таблицу" : "Показать таблицу";
+});
+
+// вариант с if...else
+/*
+let isVisible = false;
+
+button.addEventListener("click", () => {
+  isVisible = !isVisible;
+
+  if (isVisible) {
+    result.style.display = "block";
+    button.textContent = "Скрыть таблицу";
+
+    let i = 1;
+    result.innerHTML = "";
+
+    // цикл...
+
+  } else {
+    result.style.display = "none";
+    button.textContent = "Показать таблицу";
+  }
+});
+*/
+</script>
+
+</body>
+</html>

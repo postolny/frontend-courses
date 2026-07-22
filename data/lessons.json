@@ -4,286 +4,286 @@
     "title": "Показать значение переменной",
     "description": "Создание переменной. Функция. Свойство <code>onclick</code> у кнопки, запуск функции. Вывод текста с помощью свойства <code>textContent</code>.",
     "level": "Начальный",
-    "url": "lessons/js-variable.html"
+    "file": "js-variable"
   },
   {
     "course": "js",
     "title": "Получить значение поля",
     "description": "Получение элементов с помощью метода <code>getElementById()</code>. Получение значения, введённого в поле с помощью свойства <code>.value</code>. Вывод текста с помощью свойства <code>.textContent</code>.",
     "level": "Начальный",
-    "url": "lessons/js-input-value.html"
+    "file": "js-input-value"
   },
   {
     "course": "js",
     "title": "Условный оператор if...else",
     "description": "Получение значения из <code>&lt;input&gt;</code>. Работа с переменными. Преобразование строки в число с помощью функции <code>Number()</code>. Использование условия <code>if...else</code>. Сравнение значения с помощью оператора <code>>=</code>. Вывод текста с помощью свойства <code>.textContent</code>.",
     "level": "Начальный",
-    "url": "lessons/js-if...else.html"
+    "file": "js-if...else"
   },
   {
     "course": "js",
     "title": "Метод trim(), проверка заполнения поля",
     "description": "Получение значения из <code>&lt;input&gt;</code>. Условие <code>if</code> и проверка на пустоту. Удаление пробелов с помощью метода <code>.trim()</code>. Оператор <code>return</code>. Вывод текста с помощью свойства <code>.textContent</code>.",
     "level": "Начальный",
-    "url": "lessons/js-trim.html"
+    "file": "js-trim"
   },
   {
     "course": "js",
     "title": "Функции setTimeout() и clearTimeout()",
     "description": "Роль функций <code>setTimeout()</code> и <code>clearTimeout()</code>. Присвоение свойству <code>textContent</code> пустой строки. Получение миллисекунд.",
     "level": "Начальный",
-    "url": "lessons/js-settimeout-cleartimeout.html"
+    "file": "js-settimeout-cleartimeout"
   },
   {
     "course": "js",
     "title": "Увеличение и уменьшение значения переменной count",
     "description": "Объявление функции. Инкремент <code>count++</code>; и декремент <code>count--</code>; переменной <code>count</code>. Поиск элемента в HTML с <code>id=\"counter\"</code>. Вывод текста из переменной <code>count</code> с помощью свойства <code>textContent</code>.",
     "level": "Начальный",
-    "url": "lessons/js-counter.html"
+    "file": "js-counter"
   },
   {
     "course": "js",
     "title": "Цикл for",
     "description": "Обход элементов коллекции с помощью цикла <code>for</code>. Обработчик события <code>click</code> на кнопку с помощью метода <code>addEventListener</code>. Стрелочная функция.",
     "level": "Начальный",
-    "url": "lessons/js-for.html"
+    "file": "js-for"
   },
   {
     "course": "js",
     "title": "Цикл for...of",
     "description": "Обработчик события <code>click</code> на кнопку с помощью метода <code>addEventListener</code>.Обход элементов коллекции с помощью цикла <code>for...of</code>. Стрелочная функция.",
     "level": "Начальный",
-    "url": "lessons/js-for...of.html"
+    "file": "js-for...of"
   },
   {
     "course": "js",
     "title": "Метод forEach()",
     "description": "Обход всех элементов <code>.box</code> с помощью <code>forEach</code>. Установка кнопке свойства <code>disabled</code> и изменение её стиля (цвета фона) через <code>style.backgroundColor</code>.",
     "level": "Начальный",
-    "url": "lessons/js-foreach.html"
+    "file": "js-foreach"
   },
   {
     "course": "js",
     "title": "Метод forEach() — перебор массива индексов",
     "description": "Работа с DOM (поиск элементов). Коллекция DOM-элементов (с помощью <code>querySelectorAll</code>) и её перебор с помощью <code>forEach</code>. Передача массива в функцию. Индексы массива. Перебор массива индексов.",
     "level": "Начальный",
-    "url": "lessons/js-foreach-index_iteration.html"
+    "file": "js-foreach-index_iteration"
   },
   {
     "course": "js",
     "title": "Массив чисел",
     "description": "Получение элементов с помощью метода <code>getElementById()</code>. Создание массива и его присваивание переменной <code>prices</code>. Перебор массива с помощью цикла <code>for</code>. Составной оператор присваивания <code>+=</code>.",
     "level": "Начальный",
-    "url": "lessons/js-number-array.html"
+    "file": "js-number-array"
   },
   {
     "course": "js",
     "title": "Методы play() и pause()",
     "description": "Получение элемента с <code>id=\"player\"</code> с помощью метода <code>getElementById()</code>. Присвоение переменным <code>playAudio</code> и <code>pauseAudio</code> стрелочных функций. Вызов методов <code>play()</code> и <code>pause()</code> объекта <code>player</code>, которые соответственно запускают и останавливают воспроизведение аудио.",
     "level": "Начальный",
-    "url": "lessons/js-play-pause.html"
+    "file": "js-play-pause"
   },
   {
     "course": "js",
     "title": "Аудиокнопка",
     "description": "Методы <code>play()</code>, <code>pause()</code>, <code>add()</code>, <code>remove()</code>. События <code>play</code>, <code>pause</code>, <code>ended</code>. Свойство <code>currentTime</code> объекта <code>audio</code> (<code>video</code>).",
     "level": "Начальный",
-    "url": "lessons/js-audiobutton.html"
+    "file": "js-audiobutton"
   },
   {
     "course": "js",
     "title": "Добавляем прогресс-бар для аудиокнопки",
     "description": "Темы предыдущего урока. Событие <code>timeupdate</code>. Свойство <code>duration</code> объекта <code>audio</code> (<code>video</code>). Свойство <code>width</code>.",
     "level": "Начальный",
-    "url": "lessons/js-audiobutton-progress-bar.html"
+    "file": "js-audiobutton-progress-bar"
   },
   {
     "course": "js",
     "title": "Встроенный объект Date",
     "description": "Переменная <code>const</code>. Создание объекта <code>Date</code>. Получение дня, месяца, года, часов, минут. Получение элемента с <code>id=\"result\"</code> с помощью метода <code>getElementById()</code>. Использование свойства <code>.innerHTML</code> для вывода результата в виде HTML-разметки.",
     "level": "Начальный",
-    "url": "lessons/js-date.html"
+    "file": "js-date"
   },
   {
     "course": "js",
     "title": "Часы, функция setInterval()",
     "description": "Получение элемента с <code>id=\"result\"</code> с помощью метода <code>getElementById()</code>. Создание объекта <code>Date</code>. Получение часов, минут, секунд. Добавление 0 к числу, если оно меньше 10 с помощью условного оператора <code>if</code>. Свойство <code>.style</code>. Использование свойства <code>.innerHTML</code> для вывода результата в виде HTML-разметки. Встроенная функция <code>setInterval()</code>.",
     "level": "Начальный",
-    "url": "lessons/js-clock.html"
+    "file": "js-clock"
   },
   {
     "course": "js",
     "title": "Автокопирайт",
     "description": "Получение элементов с помощью метода <code>getElementById()</code>. Создание объекта <code>Date</code>. Свойства <code>.textContent</code> и <code>.innerHTML</code>. Экранирование кавычек.",
     "level": "Начальный",
-    "url": "lessons/js-autocopyright.html"
+    "file": "js-autocopyright"
   },
   {
     "course": "js",
     "title": "Калькулятор возраста",
     "description": "Свойство <code>value</code>. Логические оператор <code>!</code> (оператор \"не\") и проверка с его помощью поля на пустоту. Оператор <code>return</code>. Создание объекта <code>Date</code> (преобразование строки в объект <code>Date</code>). Логические условия <code>||</code> и <code>&&</code>. Вычитание единицы из значения переменной (<code>age--</code>). Свойство <code>textContent</code>. Объект <code>console</code>.",
     "level": "Начальный",
-    "url": "lessons/js-age-calculator.html"
+    "file": "js-age-calculator"
   },
   {
     "course": "js",
     "title": "Случайный композитор",
     "description": "Массив. Получение элементов с помощью метода <code>getElementById()</code>. Использование метода <code>addEventListener</code> для обработки событий кнопки. Получение количества элементов массива с помощью свойства <code>length</code>. Получение случайного числа с помощью метода <code>Math.random()</code>. Округление дробных чисел с помощью метода <code>Math.floor()</code>.",
     "level": "Начальный",
-    "url": "lessons/js-random-composer.html"
+    "file": "js-random-composer"
   },
   {
     "course": "js",
     "title": "Случайный цвет",
     "description": "Получение элементов с помощью метода <code>getElementById()</code>. Выбор всех заголовков с классом <code>.title</code> с помощью метода <code>querySelectorAll()</code> и доступ к ним по индексам (NodeList). Использование метода <code>addEventListener</code> для обработки событий кнопки. Методы <code>Math.random()</code> и <code>Math.floor()</code>. Свойства <code>.body</code>, <code>.style</code>, <code>.backgroundColor</code>, <code>.color</code>. Оператор сложения <code>+</code> и оператор деления <code>/</code>. Тернарный оператор.",
     "level": "Начальный",
-    "url": "lessons/js-random-color.html"
+    "file": "js-random-color"
   },
   {
     "course": "js",
     "title": "Переключение класса",
     "description": "Получение первого HTML-элемента с классом <code>btn</code> с помощью метода <code>querySelector</code>. Свойство <code>classList</code>. Методы <code>toggle()</code> и <code>contains()</code>. Тернарный оператор.",
     "level": "Начальный",
-    "url": "lessons/js-toggle-class.html"
+    "file": "js-toggle-class"
   },
   {
     "course": "js",
     "title": "Таблица умножения на 5",
     "description": "Выбор первого элемента по селектору в DOM с помощью метода <code>querySelector</code>. Цикл <code>while</code>. Оператор умножения <code>*</code>. Использование свойства <code>innerHTML</code> для вывода результата в виде HTML-разметки. Свойство <code>textContent</code>. Флаги. Тернарный оператор. Свойство <code>display</code>.",
     "level": "Начальный",
-    "url": "lessons/js-while.html"
+    "file": "js-while"
   },
   {
     "course": "js",
     "title": "Методы createElement() и append()",
     "description": "Выбор первого элемента по селектору в DOM с помощью метода <code>querySelector</code>. Цикл <code>while</code> Метод <code>createElement()</code> объекта <code>document</code> для создания элементов. Метод <code>append()</code> для вставки элемента в конец другого элемента. Свойства <code>innerHTML</code> и <code>textContent</code>.",
     "level": "Начальный",
-    "url": "lessons/js-createelement-append.html"
+    "file": "js-createelement-append"
   },
   {
     "course": "js",
     "title": "Динамическое обновление таблицы",
     "description": "Темы предыдущего урока. Получение значения из <code>input</code>. Тип данных. Преобразование строки в число с помощью функции <code>Number()</code>. Динамическое обновление таблицы при вводе (событие <code>input</code>). Событие <code>keydown</code>. Обработка нажатий клавиш: <code>KeyboardEvent</code> и свойство <code>key</code>.",
     "level": "Начальный",
-    "url": "lessons/js-dynamic-table-render.html"
+    "file": "js-dynamic-table-render"
   },
   {
     "course": "js",
     "title": "Прокрутка страницы",
     "description": "Методы <code>window.scrollTo()</code>, <code>window.scrollBy()</code>, <code>Element.scrollIntoView()</code>. Свойство <code>scrollHeight</code>. Цикл <code>for</code>. Метод <code>createElement()</code> объекта <code>document</code> для создания элементов. Свойство <code>textContent</code>. Назначение заголовку идентификатора <code>title</code> с помощью свойства <code>id</code>. Метод <code>appendChild()</code> для добавления дочернего элемента в конец другого элемента. Параметры <code>behavior</code>, <code>block</code> метода <code>scrollIntoView()</code>. Свойство <code>top</code> объекта параметров методов <code>scrollTo()</code>, <code>scrollBy()</code>.",
     "level": "Начальный",
-    "url": "lessons/js-page-scroll.html"
+    "file": "js-page-scroll"
   },
   {
     "course": "js",
     "title": "Кнопка \"Наверх\"",
     "description": "Темы предыдущего урока. Свойство <code>window.scrollY</code>, показывающее на сколько пикселей страница прокручена по вертикали от самого верха. Свойство <code>classList</code>, позволяющее управлять CSS-классами с помощью различных методов. Метод <code>add()</code>, позволяющий добавлять CSS-класс.",
     "level": "Начальный",
-    "url": "lessons/js-scroll-up.html"
+    "file": "js-scroll-up"
   },
   {
     "course": "js",
     "title": "Викторина по литературе",
     "description": "Цикл <code>for</code>. Свойство <code>Node.parentElement</code> и метод <code>Element.closest()</code> для поиска родительского элемента. Проверка на выбор радиокнопок. Подсчёт очков.",
     "level": "Начальный",
-    "url": "lessons/js-literature-quiz.html"
+    "file": "js-literature-quiz"
   },
   {
     "course": "js",
     "title": "Спойлер",
     "description": "Получение первого HTML-элемента по классу с помощью метода <code>querySelector</code>. Добавление обработчика события к HTML-элементу с помощью метода <code>addEventListener()</code>. Свойство <code>classList</code>. Методы <code>toggle()</code> и <code>contains()</code>. Тернарный оператор. Условный оператор <code>if...else</code>.",
     "level": "Начальный",
-    "url": "lessons/js-spoiler.html"
+    "file": "js-spoiler"
   },
   {
     "course": "js",
     "title": "Добавляем в спойлер шеврон",
     "description": "Темы предыдущего урока. Метод <code>forEach()</code>.",
     "level": "Начальный",
-    "url": "lessons/js-spoiler-chevron.html"
+    "file": "js-spoiler-chevron"
   },
   {
     "course": "js",
     "title": "Аккордеон",
     "description": "Передача параметра функции. Свойство <code>nextElementSibling</code>, возвращающее следующий элемент. Выбор всех элементов с классом <code>content</code> с помощью метода <code>querySelectorAll()</code>. Метод <code>contains()</code> объекта <code>classList</code>, проверяющий наличие класса в списке классов элемента. Метод <code>forEach()</code>. Метод <code>add()</code>, позволяющий добавлять CSS-класс. Метод <code>remove()</code>, позволяющий удалять CSS-класс.",
     "level": "Начальный",
-    "url": "lessons/js-accordion.html"
+    "file": "js-accordion"
   },
   {
     "course": "js",
     "title": "Свойство currentTarget",
     "description": "Темы предыдущего урока. Свойство <code>currentTarget</code>, возвращающее элемент, к которому прикреплён обработчик события.",
     "level": "Начальный",
-    "url": "lessons/js-currenttarget.html"
+    "file": "js-currenttarget"
   },
   {
     "course": "js",
     "title": "Добавляем в аккордеон шеврон",
     "description": "Темы предыдущего урока. Оператор логического отрицания <code>!</code>.",
     "level": "Начальный",
-    "url": "lessons/js-accordion-chevron.html"
+    "file": "js-accordion-chevron"
   },
   {
     "course": "js",
     "title": "Попап, свойство target",
     "description": "Свойство <code>display</code>. Свойство <code>target</code>, возвращающее элемент, на котором произошло событие.",
     "level": "Начальный",
-    "url": "lessons/js-popup.html"
+    "file": "js-popup"
   },
   {
     "course": "js",
     "title": "Лайтбокс, свойствa src и alt",
     "description": "Темы предыдущего урока. <code>HTMLImageElement</code> и его свойства <code>src</code> и <code>alt</code>.",
     "level": "Начальный",
-    "url": "lessons/js-lightbox.html"
+    "file": "js-lightbox"
   },
   {
     "course": "js",
     "title": "Лайтбокс-галерея, свойство dataset",
     "description": "Темы предыдущего урока. Свойство <code>dataset</code>, позволяющее получать доступ к пользовательским атрибутам HTML, начинающимся с <code>data-</code>.",
     "level": "Начальный",
-    "url": "lessons/js-lightbox-gallery.html"
+    "file": "js-lightbox-gallery"
   },
   {
     "course": "js",
     "title": "Событие change, методы reduce() и push()",
     "description": "Объект с вложенными объектами (объект-словарь). Получение количества элементов массива с помощью свойства <code>length</code>. Метод <code>forEach()</code>. Метод <code>reduce()</code> для получения итогового значения из массива. Событие <code>change</code> — действие, срабатывающее при изменении выбора пользователя. Метод <code>push()</code>, добавляющий новый элемент в конец массива.",
     "level": "Начальный",
-    "url": "lessons/js-change-reduce-push.html"
+    "file": "js-change-reduce-push"
   },
   {
     "course": "js",
     "title": "Метод filter()",
     "description": "Метод <code>forEach()</code>. Метод массива <code>filter()</code>, позволяющий получить новый массив, фильтруя элементы с помощью переданной колбэк-функции. Составной оператор присваивания <code>+=</code>. Оператор <code>return</code>.",
     "level": "Начальный",
-    "url": "lessons/js-filter.html"
+    "file": "js-filter"
   },
   {
     "course": "js",
     "title": "Метод sort()",
     "description": "Темы предыдущего урока. Метод <code>sort()</code>, сортирующий элементы массива и возвращающий изменённый массив (мутирующий метод). Копирование массива <code>[...products]</code>, спред-оператор (spread operator) <code>...</code>.",
     "level": "Начальный",
-    "url": "lessons/js-sort.html"
+    "file": "js-sort"
   },
   {
     "course": "js",
     "title": "Цикл for...in, простой словарь",
     "description": "Метод <code>toLowerCase()</code>, переводящий строку в нижний регистр. Метод <code>trim()</code>, удаляющий пробелы в начале и конце строки. Цикл <code>for...in</code>, позволяющий перебирать свойства (ключи) объекта. Метод <code>includes()</code>, проверяющий содержит ли одна строка другую строку. Логический оператор <code>!</code> (оператор \"не\") и проверка с его помощью поля на пустоту. Составной оператор присваивания <code>+=</code>. Оператор <code>return</code>.",
     "level": "Начальный",
-    "url": "lessons/js-for...in.html"
+    "file": "js-for...in"
   },
   {
     "course": "css",
     "title": "Базовые селекторы CSS",
     "description": "Подключение CSS. Селектор по тегу. Свойство и его значение. Свойства: <code>background-color</code>, <code>font-family</code>, <code>color</code>, <code>font-size</code>, <code>text-align</code>, <code>text-transform</code>, <code>letter-spacing</code>, <code>line-height</code>. Шестнадцатеричный код цвета (hex-код — RGB в шестнадцатеричной системе: red, green, blue).",
     "level": "Начальный",
-    "url": "lessons/css-basic-selectors.html"
+    "file": "css-basic-selectors"
   },
   {
     "course": "css",
     "title": "Лайтбокс-галерея, свойство display: grid",
     "description": "Свойство <code>object-fit</code>, управляющее тем, как содержимое элемента (например, <code>&lt;img&gt;</code> или <code>&lt;video&gt;</code>) подгоняется под размеры этого элемента. Свойства: <code>gap</code>, <code>aspect-ratio</code>, <code>inset</code>, <code>transform</code>, <code>max-width</code>, <code>max-height</code>, единицы измерения <code>vw</code> и <code>vh</code>. Медиазапросы (<code>@media</code>).",
     "level": "Средний",
-    "url": "lessons/css-lightbox-gallery-grid.html"
+    "file": "css-lightbox-gallery-grid"
   }
 ]

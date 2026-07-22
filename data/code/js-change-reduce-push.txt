@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.card {
+  margin-top: 20px;
+}
+
+.card p {
+  margin: 0;
+}
+
+.sheet-music-image {
+  width: 220px;
+  height: 297px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<select id="composer">
+  <option value="">Выберите композитора</option>
+  <option value="bach">Бах</option>
+  <option value="beethoven">Бетховен</option>
+  <option value="tchaikovsky">Чайковский</option>
+</select>
+
+<div id="result"></div>
+
+<div class="cart">
+  <h3>Корзина</h3>
+  <p>Товаров: <span id="cartCount">0</span></p>
+  <ul id="cartList"></ul>
+  <p>Итого: <span id="cartTotal">0</span> ₽</p>
+</div>
+
+<script>
+const composers = {
+  bach: {
+    author: "Бах И.С.",
+    title: "Хорошо темперированный клавир. Часть 1/ редакция Б. Муджеллини",
+    description: "Для фортепиано",
+    image: "../img/sheet-music/bach.jpg",
+    price: 963,
+    publisher: "Москва : Музыка",
+    year: 2025,
+    pages: 120,
+    editionNumber: "08168",
+    ismn: "979-0-66006-010-0",
+    format: "60×90/8",
+    cover: "в обл."
+  },
+  beethoven: {
+    author: "Бетховен Л. ван",
+    title: "Симфонии: в двух томах. Том 1 (№ 1–5)",
+    description: "Переложение для фортепиано в четыре руки",
+    image: "../img/sheet-music/beethoven.jpg",
+    price: 1200,
+    publisher: "Москва : Музыка",
+    year: 2022,
+    pages: 204,
+    editionNumber: "17782",
+    ismn: "979-0-66010-234-3",
+    format: "60×90/8",
+    cover: "В переплёте"
+  },
+  tchaikovsky: {
+    author: "Чайковский П.",
+    title: "Симфония № 1 : соль минор : \"Зимние грезы\"",
+    description: "Переложение для фортепиано",
+    image: "../img/sheet-music/tchaikovsky.jpg",
+    price: 372,
+    publisher: "Москва : Музыка",
+    year: 2020,
+    pages: 72,
+    editionNumber: "17664",
+    ismn: "979-0-66010-080-6",
+    format: "60×90/8",
+    cover: "в обл."
+  }
+};
+
+const select = document.getElementById("composer");
+const result = document.getElementById("result");
+let cart = [];
+
+function updateCart() {
+  const cartList = document.getElementById("cartList");
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
+
+  cartCount.textContent = cart.length;
+
+  cartList.innerHTML = "";
+  
+  // для каждого элемента массива cart создаётся временная переменная sheetMusic и выполняется код внутри
+  cart.forEach(sheetMusic => {
+    cartList.innerHTML += `
+      <li>
+        ${sheetMusic.author} - ${sheetMusic.title}
+        (${sheetMusic.price} ₽)
+      </li>
+    `;
+  });
+  // или через цикл for
+  // for (let i = 0; i < cart.length; i++) {
+  //   cartList.innerHTML += `
+  //     <li>
+  //       ${cart[i].author} - ${cart[i].title}
+  //       (${cart[i].price} ₽)
+  //     </li>
+  //   `;
+  // }
+  
+  // берём массив cart, проходимся по каждому элементу, складывем цены книг, начиная с нуля, и результат записываем в total (sheetMusic - это текщий элемент массива, sum - накопитель - он хранит результат предыдущего шага, 0 - это начальное значение sum)
+  const total = cart.reduce((sum, sheetMusic) => {
+    return sum + sheetMusic.price;
+  }, 0);
+  
+  // или через for (переменная i хранит индекс)
+  // let total = 0;
+  // for (let i = 0; i < cart.length; i++) {
+  //   total += cart[i].price;
+  // }
+
+  // или через for...of (здесь sheetMusic (хранит сам объект) - это тоже временная переменная как и в reduce)
+  // let total = 0;
+  // for (let sheetMusic of cart) {
+  //   total += sheetMusic.price;
+  // }
+
+  // выводим результат из total
+  cartTotal.textContent = total;
+}
+
+select.addEventListener("change", function () {
+  /* this ссылается на элемент, на котором произошло событие, то есть на <select>, эквивалентно записи const value = select.value; или const value = document.getElementById("composer").value;
+
+  Поскольку стрелочная функция не имеет this, то в ней можно использовать свойство target:
+  select.addEventListener("change", (e) => {
+    const value = e.target.value;
+  }
+  */
+  const value = this.value;
+  
+  // Если <option value="">, то очищаем результат и выходим из функции
+  if (value === "") {
+    result.innerHTML = "";
+    return;
+  }
+  
+  // при выборе в селекте Чайковский в переменную value записывается tchaikovsky, затем с помощью composers[value] в объекте composers находится ключ tchaikovsky, а его значение записывается в переменную composer
+  const composer = composers[value];
+
+  // берём значение каждого свойства объекта composer (image, author, title и т.д.) и подставляем его в шаблонную строку
+  result.innerHTML = `
+    <div class="card">
+      <img class="sheet-music-image" src="${composer.image}">
+      <p>Композитор: ${composer.author}</p>
+      <p>Название: ${composer.title}</p>
+      <p>Описание: ${composer.description}</p>
+      <p>Издательство: ${composer.publisher}</p>
+      <p>Год издания: ${composer.year}</p>
+      <p>Страниц: ${composer.pages}</p>
+      <p>ISMN: ${composer.ismn}</p>
+      <p>Формат: ${composer.format}</p>
+      <p>Переплёт: ${composer.cover}</p>
+      <p>Цена: ${composer.price} ₽</p>
+      <button class="btn">В корзину</button>
+    </div>
+  `;
+  const btn = result.querySelector(".btn");
+
+  // btn.addEventListener("click", () => {
+  //   cart++;
+  //   document.getElementById("cart").textContent = cart;
+  // });
+  btn.addEventListener("click", () => {
+    // объект выбранного композитора (composer) добавляется в массив cart, то есть в корзину
+    cart.push(composer);
+    // запускаем функцию updateCart()
+    updateCart();
+  });
+});
+</script>
+
+</body>
+</html>

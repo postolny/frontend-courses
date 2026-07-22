@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<style>
+button {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.content {
+  display: none;
+  margin-top: 5px;
+}
+
+.content.open {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<button class="btn">Показать</button>
+
+<div class="content">Содержимое спойлера</div>
+
+<script>
+const btn = document.querySelector(".btn");
+const content = document.querySelector(".content");
+
+btn.addEventListener("click", function() {
+// или btn.addEventListener("click", () => {
+  content.classList.toggle("open");
+  btn.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
+  // content.classList.contains("open") - условие (true - false)
+  //  ? "Скрыть" : "Показать" - выбор результата
+  // условие ? результат если true : результат если false
+});
+
+// если спойлер должен быть по умолчанию открыт
+/*
+btn.addEventListener("click", () => {
+  content.classList.toggle("closed");
+  btn.textContent = content.classList.contains("closed") ? "Показать" : "Скрыть";
+});
+
+.content.closed {
+  display: none;
+}
+
+<button class="btn">Скрыть</button>
+*/
+
+// с условным оператором if...else
+/*
+btn.addEventListener("click", () => {
+  if (content.style.display === "block") {
+    content.style.display = "none";
+    btn.textContent = "Показать";
+  } else {
+    content.style.display = "block";
+    btn.textContent = "Скрыть";
+  }
+});
+
+.content {
+  display: none;
+}
+
+<button class="btn">Показать</button>
+*/
+</script>
+
+</body>
+</html>

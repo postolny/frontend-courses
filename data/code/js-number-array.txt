@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<style>
+h3 span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  background: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 15px;
+  margin-right: 5px;
+}
+</style>
+</head>
+<body>
+
+<h3><span>5</span>Пятёрочка</h3>
+<h4>КАССОВЫЙ ЧЕК/ПРИХОД</h4>
+
+<ul>
+  <li>Молоко — 39.99</li>
+  <li>Лук-репка в сетке — 46.99</li>
+  <li>Морковь весовая — 38.99</li>
+</ul>
+
+<button id="calcBtn">Посчитать чек</button>
+
+<p id="result"></p>
+
+<script>
+const btn = document.getElementById("calcBtn");
+const result = document.getElementById("result");
+
+const prices = [39.99, 46.99, 38.99];
+
+btn.addEventListener("click", function () {
+  let sum = 0;
+
+  for (let i = 0; i < prices.length; i++) {
+    // обращаемся к элементу массива по индексу и с каждым проходом прибавляем текущее значение sum к текущему элементу массива
+    sum += prices[i];
+    // эквивалентно sum = sum + prices[i];
+  }
+
+  result.textContent = "Итого к оплате: " + sum + " рублей";
+  // или в обратных кавычках (шаблонная строка)
+  // result.textContent = `Итого к оплате: ${sum} рублей`;
+});
+</script>
+
+</body>
+</html>

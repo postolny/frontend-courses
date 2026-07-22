@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.strikethrough {
+  text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+
+<div>
+  <span class="word">Казнить</span>
+  <span class="word">нельзя</span>
+  <span class="word">помиловать</span>
+</div>
+
+<br>
+
+<button id="btn1">Помиловать</button>
+<button id="btn2">Казнить</button>
+
+<script>
+const words = document.querySelectorAll(".word");
+const btn1 = document.querySelector("#btn1");
+const btn2 = document.querySelector("#btn2");
+
+function setStrikethrough(indices) {
+  // сброс - проходим по каждому слову и убираем зачёркивание
+  words.forEach(word => word.classList.remove("strikethrough"));
+  // words[i] используется внутри forEach, где мы перебираем массив индексов [1,2] или [2,3], чтобы обратиться к нужным словам
+  indices.forEach(i => {
+    words[i].classList.add("strikethrough");
+  });
+}
+
+// передаём массив [0,1] или [2,3] в функцию setStrikethrough(indices)
+btn1.onclick = () => setStrikethrough([0, 1]);
+btn2.onclick = () => setStrikethrough([1, 2]);
+</script>
+
+</body>
+</html>

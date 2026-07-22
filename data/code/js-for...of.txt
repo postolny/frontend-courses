@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.colored-box:not(:last-of-type) {
+  margin-bottom: 3px;
+}
+</style>
+</head>
+<body>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<br>
+
+<div class="colored-box">1</div>
+<div class="colored-box">2</div>
+<div class="colored-box">3</div>
+
+<br>
+
+<button id="btn">Изменить цвет</button>
+
+<script>
+const boxes = document.querySelectorAll(".box");
+
+for (const el of boxes) {
+  el.textContent = "Привет!";
+}
+
+// По нажатию кнопки обходим каждый блок .colored-box и меняем цвет фона на золотой
+const btn = document.querySelector("#btn");
+const coloredBoxes = document.querySelectorAll(".colored-box");
+
+btn.addEventListener("click", () => {
+  for (const coloredBox of coloredBoxes) {
+    coloredBox.style.backgroundColor = "gold";
+  }
+});
+</script>
+
+</body>
+</html>

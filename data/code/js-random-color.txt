@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<body>
+
+<h2 class="title">Случайный цвет</h2>
+
+<button id="btn">Случайный цвет</button>
+
+<h2 id="rgb" class="title"></h2>
+
+<script>
+
+const button = document.getElementById("btn");
+const titles = document.querySelectorAll(".title");
+const rgb = document.getElementById("rgb");
+
+button.addEventListener("click", () => {
+  // каждый цветовой канал (r, g, b) может принимать значения от 0 до 255 (256 после округления с помощью Math.floor() станет 255)
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  
+  document.body.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+
+  // теперь делаем заголовок контрастным фону - для этого вычисляем яркость
+  // чтобы подобрать контрастный цвет текста, нужно определить насколько светлый или темный фон
+  // для этого находим среднее значение каналов (r, g, b) для чего складываем их и делим на 3
+  const brightness = (r + g + b) / 3;
+
+  // querySelectorAll возвращает NodeList (список элементов DOM), а [0], [1] - это индексы элементов в этом списке
+  // если brightness > 128, то black, иначе white (тернарный оператор - заменяет условный оператор if...else, когда нужно выбрать одно значение из двух)
+  titles[0].style.color = brightness > 128 ? "black" : "white";
+  titles[1].style.color = brightness > 128 ? "black" : "white";
+  // осталось вывести на страницу значение цвета в формате RGB
+  rgb.textContent = "rgb(" + r + ", " + g + ", " + b + ")";
+  // или шаблонная строка
+  // rgb.textContent = `rgb(${r}, ${g}, ${b})`;
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<body>
+
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+
+<br>
+
+<button class="button">Сохранить</button>
+<button class="button">Удалить</button>
+<button class="button">Отправить</button>
+
+<script>
+const boxes = document.querySelectorAll(".box");
+
+boxes.forEach(el => {
+  el.textContent = "Привет!";
+});
+
+// Получаем все кнопки
+const buttons = document.querySelectorAll(".button");
+
+// Обходим каждую кнопку, делаем её неактивной и меняем цвет фона на красный
+buttons.forEach(button => {
+  button.disabled = true;
+  button.style.backgroundColor = "red";
+});
+</script>
+
+</body>
+</html>

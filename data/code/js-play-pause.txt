@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<body>
+
+<audio id="player" src="audio/bach-carl-philipp-emanuel-march.mp3" preload="auto"></audio>
+
+<button onclick="playAudio()">Запустить audio</button>
+<button onclick="pauseAudio()">Остановить audio</button>
+
+<p>Карл Филипп Эмануэль Бах — Марш ре мажор (BWV Anh. 122).</p>
+
+<script>
+  const player = document.getElementById("player");
+
+  // стрелочные функции
+  const playAudio = () => player.play();
+  const pauseAudio = () => player.pause();
+
+  // обычные функции
+  /*
+  const playAudio = function () {
+    player.play();
+  };
+
+  const pauseAudio = function () {
+    player.pause();
+  };
+  */
+
+  // или
+  /*
+  function playAudio() {
+    player.play();
+  }
+
+  function pauseAudio() {
+    player.pause();
+  }
+  */
+</script>
+
+</body>
+</html>

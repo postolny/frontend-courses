@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<body>
+
+<footer>© <span id="year"></span> <a href="https://postolny.github.io/">Игорь Постольный</a></footer>
+
+<footer id="currentYear"></footer>
+
+<script>
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// вариант
+var currentYear = new Date().getFullYear();
+document.getElementById("currentYear").innerHTML = "© " +  currentYear + " <a href=\"https://postolny.github.io/\">Игорь Постольный</a>";
+// или с использованием шаблонной строки
+// document.getElementById("current-year").innerHTML = `© ${currentYear} <a href="https://postolny.github.io">Игорь Постольный</a>`;
+
+</script>
+
+</body>
+</html>

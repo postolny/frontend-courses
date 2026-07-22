@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.thumbnail {
+  width: 250px;
+  cursor: pointer;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+}
+
+.lightbox-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 6px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<img src="img/canaletto.jpg" alt="Каналетто - Дворец Дожей и набережная Скьявоне" class="thumbnail" id="openLightbox">
+
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <span id="closeLightbox" class="close">&times;</span>
+    <img id="lightboxImage">
+  </div>
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const thumbnail = document.getElementById("openLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeBtn = document.getElementById("closeLightbox");
+
+thumbnail.addEventListener("click", () => {
+  // получаем URL изображения через свойство img.src, которое, в отличие от img.getAttribute("src"), возвращает абсолютный URL
+  
+  // свойству src объекта lightboxImage присваиваем значение свойства src объекта thumbnail (копируем значение свойства)
+  lightboxImage.src = thumbnail.src;
+  // свойству alt объекта lightboxImage присваиваем значение свойства alt объекта thumbnail (копируем значение свойства)
+  lightboxImage.alt = thumbnail.alt;
+
+  lightbox.style.display = "block";
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>

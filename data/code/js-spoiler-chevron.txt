@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.chevron.active {
+  transform: rotate(180deg);
+}
+
+.content {
+  display: none;
+  margin-top: 5px;
+}
+
+.content.open {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<button class="btn"><span class="btn-text">Показать</span><span class="chevron">▼</span></button>
+
+<div class="content">Содержимое спойлера</div>
+
+<script>
+const btn = document.querySelector(".btn");
+const btnText = document.querySelector(".btn-text");
+const chevron = document.querySelector(".chevron");
+const content = document.querySelector(".content");
+
+btn.addEventListener("click", function() {
+  content.classList.toggle("open");
+  chevron.classList.toggle("active");
+  btnText.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
+});
+
+// если на странице спойлеров несколько
+
+/*
+<div class="spoiler">
+  <button class="btn">
+    <span class="btn-text">Показать</span>
+    <span class="chevron">▼</span>
+  </button>
+
+  <div class="content">Содержимое спойлера</div>
+</div>
+
+// получаем все элементы с классом spoiler (в переменной spoilers содержится коллекция всех элементов с классом spoiler)
+const spoilers = document.querySelectorAll(".spoiler");
+
+// перебираем все найденные элементы spoiler в коллекции spoilers
+spoilers.forEach(spoiler => {
+  const btn = spoiler.querySelector(".btn");
+  const btnText = spoiler.querySelector(".btn-text");
+  const chevron = spoiler.querySelector(".chevron");
+  const content = spoiler.querySelector(".content");
+
+  btn.addEventListener("click", () => {
+    content.classList.toggle("open");
+    chevron.classList.toggle("active");
+    btnText.textContent = content.classList.contains("open") ? "Скрыть" : "Показать";
+  });
+});
+*/
+</script>
+
+</body>
+</html>

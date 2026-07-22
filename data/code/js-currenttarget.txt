@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<style>
+button {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 0;
+}
+
+.content {
+  display: none;
+  margin-top: 5px;
+}
+
+.content.open {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="accordion">
+
+  <button class="btn">Секция 1</button>
+  <div class="content">Содержимое секции 1</div>
+
+  <button class="btn">Секция 2</button>
+  <div class="content">Содержимое секции 2</div>
+
+  <button class="btn">Секция 3</button>
+  <div class="content">Содержимое секции 3</div>
+
+</div>
+
+<script>
+
+// проходим по каждому элементу с классом .btn и при клике вызываем функцию toggle
+document.querySelectorAll(".btn").forEach(button => {
+  button.addEventListener("click", toggle);
+});
+
+function toggle(event) {
+  // event (назвать можно как угодно) - информация о произошедшем клике, переданная в функцию
+  // получаем кнопку, на которой сработал обработчик события, используя свойство currentTarget
+  // если в кнопке нет вложенных элементов, то target и currentTarget будут указывать на один и тот же элемент, поэтому можно использовать target, но если внутри кнопки есть вложенный элемент, например <span>, то при клике на него target будет ссылаться на этот вложенный элемент, и nextElementSibling будет искать следующий элемент уже у него, а не у кнопки
+  const btn = event.currentTarget;
+  // получаем следующий сразу за кнопкой div
+  const content = btn.nextElementSibling;
+
+  // при повторном нажатии на кнопку закрываем открытый блок
+  // если выбранный блок уже открыт (имеет класс open)
+  if (content.classList.contains("open")) {
+    // закрываем его (удаляем у него класс open)
+    content.classList.remove("open");
+    return; // выходим из функции
+  }
+
+  // закрываем все открытые блоки, обходя их циклом и удаляя класс open
+  document.querySelectorAll(".content").forEach(item => {
+    item.classList.remove("open");
+  });
+
+  // открываем только нажатый, добавляя класс open
+  content.classList.add("open");
+}
+
+</script>
+
+</body>
+</html>

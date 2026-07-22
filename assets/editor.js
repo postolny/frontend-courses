@@ -7,6 +7,13 @@ const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
   lineWrapping: true,
   theme: "eclipse"
 });
+async function loadLesson() {
+  const lesson = location.hash.slice(1);
+  const response = await fetch(`data/code/${lesson}.txt`);
+  const code = await response.text();
+  editor.setValue(code);
+  updatePreview();
+}
 const lightTheme = "eclipse";
 const darkTheme = "ayu-dark";
 
@@ -26,7 +33,6 @@ function updatePreview() {
   document.getElementById("output").srcdoc = editor.getValue();
 }
 document.getElementById("reloadBtn").addEventListener("click", updatePreview);
-updatePreview();
 document.getElementById("formatBtn").addEventListener("click", async () => {
   const code = editor.getValue();
   const formatted = await prettier.format(code, {
@@ -34,7 +40,9 @@ document.getElementById("formatBtn").addEventListener("click", async () => {
     plugins: prettierPlugins
   });
   editor.setValue(formatted);
+  updatePreview();
 });
+loadLesson();
 const btn = document.getElementById("copyBtn");
 const iconCopy = document.getElementById("iconCopy");
 const iconCheck = document.getElementById("iconCheck");

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.thumbnail {
+  width: 250px;
+  cursor: pointer;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+}
+
+.lightbox-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 6px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<img src="img/canaletto.jpg" alt="Каналетто - Дворец Дожей и набережная Скьявоне" class="thumbnail" id="openLightbox">
+<img src="img/adriaen-van-de-velde.jpg" alt="Адриан ван де Вельде - Опушка леса" class="thumbnail" id="openLightbox">
+<img src="img/aelbert-jacobsz-cuyp.jpg" alt="Альберт Кейп - Крестьяне с коровами у реки Мерведе" class="thumbnail" id="openLightbox">
+
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-content">
+    <span id="closeLightbox" class="close">&times;</span>
+    <img id="lightboxImage">
+  </div>
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeBtn = document.getElementById("closeLightbox");
+
+document.querySelectorAll(".thumbnail").forEach(img => {
+  img.addEventListener("click", () => {
+    // получаем URL изображения через свойство img.src, которое, в отличие от img.getAttribute("src"), возвращает абсолютный URL
+
+    // свойству src объекта lightboxImage присваиваем значение свойства src объекта img, по которому кликнули (копируем значение свойства)
+    lightboxImage.src = img.src;
+    // свойству alt объекта lightboxImage присваиваем значение свойства alt объекта img, по которому кликнули (копируем значение свойства)
+    lightboxImage.alt = img.alt;
+
+    lightbox.style.display = "block";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+
+// для галереи лучше не использовать одно и то же большое изображение для миниатюры и изображения, открываемого в окне лайтбокса - лучше их разделить:
+
+/*
+<img src="img/small/canaletto.jpg" data-large="img/canaletto.jpg" alt="Каналетто - Дворец Дожей и набережная Скьявоне" class="thumbnail" id="openLightbox">
+<img src="img/small/adriaen-van-de-velde.jpg" data-large="img/adriaen-van-de-velde.jpg" alt="Адриан ван де Вельде - Опушка леса" class="thumbnail" id="openLightbox">
+<img src="img/small/aelbert-jacobsz-cuyp.jpg" data-large="img/aelbert-jacobsz-cuyp.jpg" alt="Альберт Кейп - Крестьяне с коровами у реки Мерведе" class="thumbnail" id="openLightbox">
+
+// свойству src объекта lightboxImage присваиваем значение свойства data-атрибута у изображения, по которому кликнули (копируем значение свойства)
+lightboxImage.src = img.dataset.large;
+*/
+
+</script>
+
+</body>
+</html>

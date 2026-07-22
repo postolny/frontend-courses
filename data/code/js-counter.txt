@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<body>
+
+<button onclick="incrementCounter()">Увеличить на 1</button>
+<button onclick="decrementCounter()">Уменьшить на 1</button>
+
+<p id="counter">0</p>
+
+<script>
+let count = 0;
+
+function incrementCounter() {
+  count++;
+  document.getElementById("counter").textContent = count;
+}
+
+function decrementCounter() {
+  count--;
+  document.getElementById("counter").textContent = count;
+}
+
+// или со стрелочной функцией
+/*
+const incrementCounter = () => {
+  count++;
+  document.getElementById("counter").textContent = count;
+};
+
+const decrementCounter = () => {
+  count--;
+  document.getElementById("counter").textContent = count;
+};
+*/
+</script>
+
+</body>
+</html>

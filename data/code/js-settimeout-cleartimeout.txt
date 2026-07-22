@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<body>
+
+<button onclick="view()">Нажми меня</button>
+<p id="result"></p>
+
+<script>
+let seconds = 5;
+let text = "Этот текст пропадёт через " + seconds + " секунд.";
+// или в обратных кавычках (шаблонная строка)
+// let text = `Этот текст пропадёт через ${seconds} секунд.`;
+let timer; // значение пока не присвоено (оно равно undefined)
+
+function view() {
+  const result = document.getElementById("result");
+
+  // показываем текст
+  result.textContent = text;
+  
+  // отменяем предыдущий таймер (если кнопку снова нажали)
+  clearTimeout(timer);
+  
+  // запускаем новый таймер
+  timer = setTimeout(() => {
+    result.textContent = ""; // через 5 секунд очищаем
+  }, seconds * 1000); // значение seconds умножаем на 1000, чтобы получить миллисекунды
+}
+</script>
+
+</body>
+</html>

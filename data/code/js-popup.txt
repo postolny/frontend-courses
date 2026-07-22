@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  background: #fff;
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<button id="openPopup">Открыть попап</button>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span id="closePopup" class="close">&times;</span>
+    <h2>Попап</h2>
+    <p>Закрыть попап можно кликнув на крестик или пространство вне окна.</p>
+  </div>
+</div>
+
+<script>
+const openBtn = document.getElementById("openPopup");
+const closeBtn = document.getElementById("closePopup");
+const popup = document.getElementById("popup");
+
+// открываем попап
+openBtn.addEventListener("click", () => {
+  popup.style.display = "block";
+});
+
+// закрываем попап по клику на крестик
+closeBtn.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+// закрываем попап при клике вне окна
+// если кликнули по содержимому попапа (.popup-content), а не по самому элементу popup (затемнённому фону, занимающему всю область экрана), то условие event.target === popup будет ложным, и окно не закроется
+// здесь используем target (элемент, по которому действительно кликнули), а не currentTarget (элемент, на котором висит обработчик клика - в данном случае window)
+window.addEventListener("click", (event) => {
+  if (event.target === popup) {
+    popup.style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>
