@@ -99,7 +99,7 @@
   },
   {
     "course": "js",
-    "title": "Добавляем перетаскивание прогресс-бара аудиокнопки",
+    "title": "Добавляем перемотку аудио перетаскиванием по прогресс-бару",
     "description": "Темы предыдущего урока. Методы <code>getBoundingClientRect()</code>, <code>Math.min()</code> и <code>Math.max()</code>. События <code>pointerdown</code>, <code>pointermove</code>, <code>pointerup</code>.",
     "level": "Средний",
     "file": "js-audiobutton-progress-bar-dragging"
