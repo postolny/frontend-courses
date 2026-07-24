@@ -125,8 +125,10 @@ player.addEventListener("play", () => {
 // в pause и ended делаем наоборот
 */
 
+let isDragging = false; // флаг, при нажатии клавиши мышки будет true
 // в обработчике событие timeupdate срабатывает каждый раз, когда во время воспроизведения меняется текущее время
 player.addEventListener("timeupdate", () => {
+  if (isDragging) return; // если тащим ползунок, обработчик отключится (или плеер двигает ползунок или мы)
   // чтобы вычислить какая часть трека уже воспроизведена делим текущее время (currentTime) на общую продолжительность трека (duration) и получаем число от 0 до 1, результат умножаем на 100, чтобы перевести в проценты
   const percent = (player.currentTime / player.duration) * 100;
   // изменяем CSS-свойство width у .progress-fill, присваивая %
@@ -134,6 +136,98 @@ player.addEventListener("timeupdate", () => {
   // или с шаблонной строкой
   // progressFill.style.width = `${percent}%`;
 });
+
+// функция перемотки
+function seek(e) {
+  // получаем позицию прогресс-бара относительно окна браузера (viewport)
+  const rect = progressBar.getBoundingClientRect();
+
+  // вычисляем расстояние от левого края progressBar до точки клика (положение мышки на полосе)
+  // e.clientX - координата мыши относительно окна
+  // rect.left - координата левого края progressBar относительно окна
+  let x = e.clientX - rect.left;
+
+  // не даём значению x выйти за пределы progressBar
+  // Math.min(a, b) возвращает меньшее из двух чисел, Math.max(a, b) возвращает большее число, rect.width - это ширина progressBar
+  // например, если x (расстояние от левого края progressBar до точки клика) = 150, а ширина progressBar = 400, то Math.min(x, 400) выбирая меньшее, выбирает 150, а Math.max, выбирая большее (из 0 и 150) тоже выбирает 150
+  // то есть
+  // если x < 0, присваиваем 0;
+  // если x > rect.width, присваиваем rect.width
+  //равносильно записи:
+  /*
+  if (x < 0) {
+    x = 0;
+  }
+
+  if (x > rect.width) {
+    x = rect.width;
+  }
+  */
+  x = Math.max(0, Math.min(x, rect.width));
+
+  // тут мы делим делим расстояние от левого края progressBar до точки клика на ширину полосы и получаем число от 0 до 1 (долю)
+  // percent - это доля ширины полосы прогресса, которую занимает расстояние до точки клика
+  const percent = x / rect.width;
+
+  // двигаем полоску, превращая в проценты (умножив на 100)
+  progressFill.style.width = `${percent * 100}%`;
+
+  // и перематываем
+  player.currentTime = percent * player.duration;
+}
+
+// когда нажимаем на progressBar
+progressBar.addEventListener("pointerdown", (e) => {
+  isDragging = true; // тащим мы, а не плеер
+  // перематываем в место первого клика
+  seek(e);
+});
+
+// когда держим кнопку мыши зажатой и двигаем мышь
+// событие вешаем на document, а не на progressBar, чтобы можно было вести мышь за пределы полосы, но перемотка чтобы при этом продолжалась
+document.addEventListener("pointermove", (e) => {
+  // проверка - если не начали перетаскивание, то ничего не делаем, чтобы любое движение мыши по странице вызывало бы seek(e)
+  if (!isDragging) return;
+  seek(e);
+});
+
+// когда отпускаем
+document.addEventListener("pointerup", () => {
+  // завершаем перемотку
+  isDragging = false;
+});
+
+// к полосе можно добавить кружок с помощью псевдоэлемента ::after
+/*
+.progress-bar {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.progress-fill {
+  position: relative;
+  width: 0%;
+  height: 100%;
+  background: #16a085;
+  border-radius: 4px;
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #16a085;
+}
+*/
 </script>
 
 </body>
