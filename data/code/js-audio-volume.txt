@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<style>
+#volume-control {
+  display: block;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<audio id="player" src="audio/bach-carl-philipp-emanuel-march.mp3" preload="auto"></audio>
+
+<button onclick="playAudio()">Запустить audio</button>
+<button onclick="pauseAudio()">Остановить audio</button>
+
+<input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.5">
+
+<p>Громкость: <span id="value">0.5</span></p>
+
+<p>Карл Филипп Эмануэль Бах — Марш ре мажор (BWV Anh. 122).</p>
+
+<script>
+const player = document.getElementById("player");
+const volumeControl = document.getElementById("volume-control");
+const text = document.getElementById("value");
+
+// стрелочные функции
+const playAudio = () => player.play();
+const pauseAudio = () => player.pause();
+
+// обычные функции
+/*
+const playAudio = function () {
+  player.play();
+};
+
+const pauseAudio = function () {
+  player.pause();
+};
+*/
+
+// или
+/*
+function playAudio() {
+  player.play();
+}
+
+function pauseAudio() {
+  player.pause();
+}
+*/
+volumeControl.addEventListener("input", () => {
+  // берём значение ползунка (volumeControl.value) и преобразуем строку в число
+  const volume = Number(volumeControl.value);
+  // устанавливаем громкость
+  player.volume = volume;
+  // выводим значение уровня громкости
+  text.textContent = volume;
+  // можно показать в процентах
+  // text.textContent = `${volume * 100}%`;
+  // или от 0 до 10
+  // text.textContent = volume * 10;
+  // или столько то из 10
+  // text.textContent = `${volume * 10}/10`;
+  // или если шаг будет например step="0.01", то нужно округлять значения
+  // text.textContent = `${Math.round(volume * 10)}/10`;
+});
+</script>
+
+</body>
+</html>

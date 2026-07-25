@@ -85,6 +85,13 @@
   },
   {
     "course": "js",
+    "title": "Регулятор громкости",
+    "description": "Темы предыдущего урока. Событие <code>input</code>. Преобразование строки в число с помощью функции <code>Number()</code>. Свойство <code>volume</code> объекта <code>HTMLMediaElement</code> (<code>&lt;audio&gt;</code> или <code>&lt;video&gt;</code>).",
+    "level": "Начальный",
+    "file": "js-audio-volume"
+  },
+  {
+    "course": "js",
     "title": "Аудиокнопка",
     "description": "Методы <code>play()</code>, <code>pause()</code>, <code>add()</code>, <code>remove()</code>. События <code>play</code>, <code>pause</code>, <code>ended</code>. Свойство <code>currentTime</code> объекта <code>audio</code> (<code>video</code>).",
     "level": "Начальный",

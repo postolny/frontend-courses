@@ -103,6 +103,8 @@ player.addEventListener("pause", () => {
 
 player.addEventListener("ended", () => {
   player.currentTime = 0;
+  // по окончанию обнуляем progressFill
+  progressFill.style.width = "0%";
   playPause.classList.remove("playing");
 });
 
