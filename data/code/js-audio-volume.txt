@@ -26,6 +26,9 @@ const player = document.getElementById("player");
 const volumeControl = document.getElementById("volume-control");
 const text = document.getElementById("value");
 
+// громкости аудио (player.volume) присваиваем значение ползунка (синхронизируем начальные значения ползунка и аудио, потому что они существуют независимо друг от друга (иначе аудио изначально будет звучать на полную громкость, поскольку громкость у самого аудио по умолчанию player.volume === 1), затем через событие input обновляем громкость при каждом изменении ползунка)
+player.volume = Number(volumeControl.value);
+
 // стрелочные функции
 const playAudio = () => player.play();
 const pauseAudio = () => player.pause();
