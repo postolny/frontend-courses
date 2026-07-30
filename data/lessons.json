@@ -260,6 +260,13 @@
   },
   {
     "course": "js",
+    "title": "Лайтбокс-галерея с навигацией Prev/Next",
+    "description": "Темы предыдущего урока. Оператор остатка от деления <code>%</code>. Событие <code>wheel</code>. Свойства <code>key</code> и <code>deltaY</code>.",
+    "level": "Начальный",
+    "file": "js-lightbox-gallery-prev-next"
+  },
+  {
+    "course": "js",
     "title": "Событие change, методы reduce() и push()",
     "description": "Объект с вложенными объектами (объект-словарь). Получение количества элементов массива с помощью свойства <code>length</code>. Метод <code>forEach()</code>. Метод <code>reduce()</code> для получения итогового значения из массива. Событие <code>change</code> — действие, срабатывающее при изменении выбора пользователя. Метод <code>push()</code>, добавляющий новый элемент в конец массива.",
     "level": "Начальный",

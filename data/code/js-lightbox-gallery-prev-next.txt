@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<style>
+.thumbnail {
+  width: 250px;
+  cursor: pointer;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+}
+
+.lightbox-content img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 6px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+</style>
+</head>
+<body>
+
+<img src="img/small/canaletto.jpg" data-large="img/canaletto.jpg" alt="Каналетто - Дворец Дожей и набережная Скьявоне" class="thumbnail" id="openLightbox">
+<img src="img/small/adriaen-van-de-velde.jpg" data-large="img/adriaen-van-de-velde.jpg" alt="Адриан ван де Вельде - Опушка леса" class="thumbnail" id="openLightbox">
+<img src="img/small/aelbert-jacobsz-cuyp.jpg" data-large="img/aelbert-jacobsz-cuyp.jpg" alt="Альберт Кейп - Крестьяне с коровами у реки Мерведе" class="thumbnail" id="openLightbox">
+
+<div id="lightbox" class="lightbox">
+  <span id="closeLightbox" class="close">&times;</span>
+  <button class="prev">&#10094;</button>
+  <div class="lightbox-content">
+    <img id="lightboxImage">
+  </div>
+  <button class="next">&#10095;</button>
+</div>
+
+<script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeBtn = document.getElementById("closeLightbox");
+// получаем все миниатюры
+const thumbnails = document.querySelectorAll(".thumbnail");
+let currentIndex = 0;
+
+// функция отображения изображения
+// параметр index получает значение при вызове функции showImage(index)
+// это значение передаётся из цикла forEach, где index - это индекс (номер) текущего изображения в NodeList thumbnails
+// благодаря этому функция showImage() знает, какое именно изображение нужно открыть
+
+function showImage(index) {
+  currentIndex = index;
+  // получаем значение атрибута data-large через свойство dataset
+  lightboxImage.src = thumbnails[index].dataset.large;
+  // получаем значение свойства alt выбранного изображения
+  lightboxImage.alt = thumbnails[index].alt;
+}
+
+// открытие лайтбокса
+thumbnails.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    // при клике передаём индекс выбранного изображения в showImage()
+    showImage(index);
+    lightbox.style.display = "block";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === lightbox) {
+    lightbox.style.display = "none";
+  }
+});
+
+// обработчики кнопок
+document.querySelector(".next").addEventListener("click", () => {
+  // currentIndex + 1 увеличивает индекс на единицу
+  // thumbnails.length возвращает количество изображений в NodeList, например const thumbnails = [img1, img2, img3]; тогда thumbnails.length равно 3
+  // % - это оператор остатка от деления
+  // если достигли конца NodeList, возвращаемся к первому изображению (если текущий индекс равен индексу последнего изображения - оно имеет индекс 2 (считаем с нуля), то (currentIndex + 1) % thumbnails.length = (2 + 1) % 3 = 3 % 3 = 0 (0 - это индекс первого изображения))
+  currentIndex = (currentIndex + 1) % thumbnails.length;
+  // здесь уже передаётся не index из forEach, а переменная currentIndex, которая хранит индекс текущего открытого изображения
+  showImage(currentIndex);
+});
+
+document.querySelector(".prev").addEventListener("click", () => {
+  // уменьшаем индекс текущего изображения на 1
+  // thumbnails.length добавляем, чтобы избежать отрицательного индекса (для этого добавляем длину)
+  // если достигли начала NodeList, переходим к последнему изображению
+  currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+  showImage(currentIndex);
+});
+
+// переключение клавишами
+document.addEventListener("keydown", (e) => {
+  // если значение свойства display у lightbox не равно "block", выходим из функции, то есть если лайтбокс закрыт, не выполняем обработку клавиш
+  if (lightbox.style.display !== "block") return;
+
+  if (e.key === "ArrowRight") {
+    currentIndex = (currentIndex + 1) % thumbnails.length;
+    showImage(currentIndex);
+  }
+
+  if (e.key === "ArrowLeft") {
+    currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+    showImage(currentIndex);
+  }
+
+  if (e.key === "Escape") {
+    lightbox.style.display = "none";
+  }
+});
+
+// перелистывание колесиком мыши
+// в объект e передаётся информация e.deltaY о событии wheel
+lightbox.addEventListener("wheel", (e) => {
+  // отменяем стандартное действие браузера - прокрутку страницы
+  e.preventDefault();
+  // если крутим колёсико вниз (значение свойства deltaY больше нуля)
+  if (e.deltaY > 0) {
+    // переходим к следующему изображению
+    currentIndex = (currentIndex + 1) % thumbnails.length;
+  } else {
+    currentIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+  }
+  showImage(currentIndex);
+});
+</script>
+
+</body>
+</html>
